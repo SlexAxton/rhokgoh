@@ -1,19 +1,37 @@
-require.config({
-    // default plugin settings, listing here just as a reference
+require({
     hbs : {
         templateExtension : 'hbs',
-        // if disableI18n is `true` it won't load locales and the i18n helper
-        // won't work as well.
         disableI18n : true
     },
     paths : { 'template' : '../template' }
-});
+},
+[
+  'env',
+  'jquery',
+  'View/Calendar',
+  'Model/Interval',
+  'Collection/Intervals',
+  'globalui/error'
+], function (env, $, CalendarView, IntervalModel, IntervalCollection, globalError) {
 
-// Require our template with the handlebars plugin
-define(['view/ProgressViz'], function (ProgressViz) {
-  // Find our container
-  var container = document.getElementsByTagName('body')[0];
-  // Run your template function, and inject it.
+  var dataError = globalError.dataError;
 
-  new ProgressViz({el: container});
+  var $dfd = $.ajax({
+    url : env.get('api_base_url') + 'fakeData.json'
+  });
+
+  $dfd.success(function (data) {
+    if (data.error) {
+      return dataError(data.error_msg);
+    }
+
+    var mainView = new CalendarView({
+      el : document.getElementsByTagName('body')[0],
+      collection : new IntervalCollection(data.results.intervals)
+    });
+
+    mainView.render();
+  });
+
+  $dfd.fail(dataError);
 });
