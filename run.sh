@@ -4,6 +4,8 @@
 cd /vagrant
 mkdir -p logs
 export NODE_PATH=/usr/lib/node_modules
+sudo mkdir -p /usr/local/var/mongodb
+sudo chmod 777 /usr/local/var/mongodb
 
 cleanupEnvironment() {
   echo "---------------------------------------------------------------------"
@@ -23,7 +25,7 @@ cleanupEnvironment() {
 
 # Run the stuff!
 mongod --config $PWD/config/vagrant/mongod.conf --fork --logpath $PWD/logs/mongodb.log --logappend
-sudo supervisor -e 'hbs|json|js' $PWD/server.js &
+sudo supervisor -n error -e 'hbs|json|js' $PWD/server.js &
 # sudo nginx -c $PWD/config/vagrant/nginx.conf
 
 echo ""

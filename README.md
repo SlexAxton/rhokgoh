@@ -15,8 +15,7 @@ Running
 
 ```
 cd /vagrant
-# Run run.sh with sudo since it runs on port 80
-sudo ./run.sh
+./run.sh
 ```
 
 
