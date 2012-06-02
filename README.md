@@ -18,4 +18,16 @@ cd /vagrant
 ./run.sh
 ```
 
+
+
 The VM will be available at http://192.168.50.10 from the host machine
+
+We suggest that you set up a nicer name for this.
+
+`sudo vim /etc/hosts`
+
+and then add
+
+`192.168.50.10  local.rhokgoh.com`
+
+The access the site at: [local.rhokgoh.com](http://local.rhokgoh.com/) .
