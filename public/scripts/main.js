@@ -10,11 +10,10 @@ require.config({
 });
 
 // Require our template with the handlebars plugin
-define(['hbs!template/one'], function (tmplOne) {
+define(['view/ProgressViz'], function (ProgressViz) {
   // Find our container
   var container = document.getElementsByTagName('body')[0];
   // Run your template function, and inject it.
-  container.innerHTML = tmplOne({
-    adjective : 'favorite'
-  });
+
+  new ProgressViz({el: container});
 });
