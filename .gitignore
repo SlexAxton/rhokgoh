@@ -1,5 +1,5 @@
 config/local/*
-logs/*
+logs/*.*
 .vagrant
 
 .DS_store

@@ -1,8 +1,8 @@
 #!/bin/bash
 
 sudo nginx -s stop
-
 cd /vagrant
+mkdir -p logs
 export NODE_PATH=/usr/lib/node_modules
 
 cleanupEnvironment() {
