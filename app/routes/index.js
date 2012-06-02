@@ -4,6 +4,8 @@
  */
 
 exports.index = function(req, res){
-  console.log( req.session );
-  res.render('index', { title: 'Express' });
+  res.render('index', {
+    title: 'Express',
+    built: req.query.servebuild
+  });
 };

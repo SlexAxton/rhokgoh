@@ -1,5 +1,5 @@
 config/local/*
 logs/*.*
 .vagrant
-
+public/scripts-build
 .DS_store
