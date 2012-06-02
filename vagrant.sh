@@ -5,7 +5,7 @@
 
 which node
 if [ "$?" -ne "0" ]; then
-  echo "Installing Node..."
+  echo "Installing Node and MongoDB and stuffs"
   #!/bin/bash
 
   # This is the Vagrant provisioning script
@@ -25,7 +25,7 @@ if [ "$?" -ne "0" ]; then
   sudo npm install -g mongodb --mongodb:native
 
   # Setup MongoDB data dir
-  #sudo mkdir -p /usr/local/var/mongodb
-  #sudo chmod 777 /usr/local/var/mongodb
+  sudo mkdir -p /usr/local/var/mongodb
+  sudo chmod 777 /usr/local/var/mongodb
 
 fi
