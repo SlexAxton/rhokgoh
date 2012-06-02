@@ -13,8 +13,8 @@ cleanupEnvironment() {
   echo "Stopping mongod"
   killall -2 mongod
 
-  echo "Stopping nginx"
-  sudo nginx -s stop
+#  echo "Stopping nginx"
+#  sudo nginx -s stop
 
   echo "Everything Stopped. G2G!"
 
@@ -23,8 +23,8 @@ cleanupEnvironment() {
 
 # Run the stuff!
 mongod --config $PWD/config/vagrant/mongod.conf --fork --logpath $PWD/logs/mongodb.log --logappend
-supervisor -e 'hbs|json|js' $PWD/server.js &
-sudo nginx -c $PWD/config/vagrant/nginx.conf
+sudo supervisor -e 'hbs|json|js' $PWD/server.js
+# sudo nginx -c $PWD/config/vagrant/nginx.conf
 
 echo ""
 echo "Everything loaded. Press any key (or CTRL-C) to turn it all off: "
