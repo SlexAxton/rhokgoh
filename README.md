@@ -15,7 +15,8 @@ Running
 
 ```
 cd /vagrant
-./run.sh
+# Run run.sh with sudo since it runs on port 80
+sudo ./run.sh
 ```
 
 
@@ -30,4 +31,4 @@ and then add
 
 `192.168.50.10  local.rhokgoh.com`
 
-The access the site at: [local.rhokgoh.com](http://local.rhokgoh.com/) .
+The access the site at: [local.rhokgoh.com](http://local.rhokgoh.com/)

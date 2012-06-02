@@ -23,7 +23,7 @@ cleanupEnvironment() {
 
 # Run the stuff!
 mongod --config $PWD/config/vagrant/mongod.conf --fork --logpath $PWD/logs/mongodb.log --logappend
-sudo supervisor -e 'hbs|json|js' $PWD/server.js
+sudo supervisor -e 'hbs|json|js' $PWD/server.js &
 # sudo nginx -c $PWD/config/vagrant/nginx.conf
 
 echo ""
