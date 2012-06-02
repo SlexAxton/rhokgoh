@@ -1,8 +1,7 @@
 define([
     'backbone',
-    'Collection/Intervals',
     'hbs!template/calendar'
-], function (Backbone, Checkins, calendarTmpl) {
+], function (Backbone, calendarTmpl) {
   return Backbone.View.extend({
     template : calendarTmpl,
 
