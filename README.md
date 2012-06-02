@@ -11,7 +11,7 @@ Running
 3. Get the rhok32.box Vagrant instance from a team member (Mac versions of Vagrant and VirtualBox can probably be copied as well)
 4. ```vagrant box add rhok-lucid32 rhok32.box```
 5. Within this git project, ```vagrant up```
-6. After the instance has started:
+6. After the instance has started, ```vagrant ssh``` to SSH into the VM
 
 ```
 cd /vagrant
