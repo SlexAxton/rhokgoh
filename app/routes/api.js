@@ -99,6 +99,8 @@ exports.routes = function (prefix, app) {
         duration : req.param('duration', 90),
         name : req.param('name'),
         description : req.param('description', ''),
+        // defaulting to blank string for now... but it should probably be required
+        campaign : req.param('campaign', ''),
         success_dates : []
       },
       { safe : true },
