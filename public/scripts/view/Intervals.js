@@ -6,8 +6,7 @@ define([
   'jquery',
   '3rd/raphael',
   'View/Calendar',
-  'View/Thermo',
-  'hbs!template/intervalStateContainer'
+  'View/Thermo'
 ], function (state, Backbone, _, $, Raphael, CalendarView, ThermoView, intervalStateTmpl) {
   return Backbone.View.extend({
 
@@ -16,8 +15,6 @@ define([
     },
 
     render: function () {
-
-      this.$el.append( intervalStateTmpl({}) );
 
       //empty in memory div for initialization
       var raphaelElement = $('<div/>');
