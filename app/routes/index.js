@@ -19,3 +19,14 @@ exports.challenge = function (req, res) {
     options : JSON.stringify(options)
   });
 };
+
+exports.challenge_form = function (req, res) {
+  var options = require('../../config/local/rhokgoh.json');
+  options.challenge_id = req.params.id;
+  res.render('challengeform', {
+    title : 'Create a Challenge',
+    access_token : req.param('accessToken', ''),
+    built : req.query.servebuild,
+    options : JSON.stringify(options)
+  });
+};

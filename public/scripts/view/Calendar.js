@@ -60,7 +60,7 @@ define([
         fill = 'rgba(0,0,0,0.1)';
       }
       else if (data.success) {
-        fill = 'green';
+        fill = 'rgba(125,192,79,1)';
       }
       else {
         var date = new Date(data.day);
@@ -71,10 +71,11 @@ define([
               (date.getMonth() === today.getMonth()) &&
               (date.getYear() === today.getYear())) {
           console.log(data);
-          fill = 'blue';
+          fill = '#FFBF53';
         }
+        //future
         else if (+date > +today) {
-          fill = 'rgba(233,233,233,1)';
+          fill = '#FFF';
         }
         else {
           //if failure
