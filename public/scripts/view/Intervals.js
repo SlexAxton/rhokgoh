@@ -20,20 +20,23 @@ define([
       //empty in memory div for initialization
       var raphaelElement = $('<div/>');
       this.raphael = Raphael( 'interval_wrapper', 100, 90 * 10);
-      this.intervalElements = this.raphael.set();
+      this.intervalElements = [this.raphael.set(), this.raphael.set(), this.raphael.set()];
+      var months = [];
 
 
       //initialize unpresentable list of interval points
-      var self = this;
-      this.collection.each(function(val, key) {
-        self.intervalElements.push(
-          self.raphael
-            .rect(0,0,0,0)
-            .data("meta", val)
-        );
+      var self = this, i = 0;
+      _.each(this.collection.toJSON({filter: 'months'}), function(month, key) {
+        _.each(month, function(day) {
+          self.intervalElements[i].push(
+            self.raphael
+              .rect(0,0,0,0)
+              .data("meta", day)
+          );
+        });
+        i++;
       });
 
-      //$('#interval_wrapper').append( this.raphael );
       this.stateChange();
 
     },
@@ -47,7 +50,8 @@ define([
       var standardViewOptions = {
         el : $('.container', this.el),
         collection : this.collection,
-        intervalElementSet: this.intervalElements
+        intervalElementSet: this.intervalElements,
+        model: this.model
       };
 
       if (state.get('state') === 'calendar') {

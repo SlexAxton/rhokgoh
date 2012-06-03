@@ -14,7 +14,7 @@ a {
 svg.thermo {
   border: 1px solid #bada55;
   width: 450px;
-  height: 20px;
+  height: 40px;
   -webkit-border-top-left-radius: 5px;
   -webkit-border-bottom-left-radius: 5px;
   -moz-border-radius-topleft: 5px;
@@ -24,8 +24,8 @@ svg.thermo {
 }
 
 svg.calendar {
-    height: 50px;
-    width: 230px;
+    height: 300px;
+    width: 500px;
 }
 
 svg {

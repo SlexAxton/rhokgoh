@@ -12,6 +12,8 @@ define([
     },
     name: 'calendar',
 
+    daySize: 20,
+
     render : function () {
       this.transform();
       $('svg').attr('class', this.name);
@@ -23,37 +25,41 @@ define([
       var self = this;
       var coords;
 
-      _.each(this.intervalElementSet, function(val, index) {
-        coords = self.convertDateToCoordinate(val.data("meta").get("day"), index);
-        var success = val.data("meta").get("success");
-        val.animate(
-          _.extend(
-            coords,
-            {
-              height:10,
-              width: 10,
-              fill: success ? '#BADA55' : '#888'
-            }
-          ),
-          500);
+      _.each(this.intervalElementSet, function(months, monthIndex) {
+        _.each(months, function(val, index) {
+          coords = self.convertIntervalToCoordinate(monthIndex, index);
+          var data = val.data('meta');
+
+          fill = data.blank ? 'rgba(0,0,0,0.1)' : data.success ? '#bada55' : '#222';
+          val
+          .attr({
+            fill: fill,
+            stroke: 'none',
+            r: 2
+          })
+          .animate(
+            _.extend(
+              coords,
+              {
+                height: self.daySize,
+                width: self.daySize
+              }
+            ),
+            500);
+        });
       });
 
     },
 
-    convertDateToCoordinate : function (date, index) {
-      var dateObj = new Date(date),
-          month = 0;
+    convertIntervalToCoordinate : function (monthIndex, index) {
+      var column, row;
 
-      if (index > 61) {
-        month = 2;
-      }
-      else if (index > 31) {
-        month = 1;
-      }
+      column = index % 7;
+      row = 0 | index / 7;
 
       return {
-        x: (dateObj.getDay() * 10) + month * 80,
-        y: ((0 | dateObj.getDate() / 7) * 10)
+        x: (column * this.daySize) + (monthIndex * this.daySize * 8),
+        y: row * this.daySize
       };
     }
 

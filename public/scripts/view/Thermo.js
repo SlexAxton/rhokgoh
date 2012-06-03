@@ -12,6 +12,8 @@ define([
     },
     name: 'thermo',
 
+    size: {height: 40, width: 5},
+
     render : function () {
       this.transform();
       $('svg').attr('class', this.name);
@@ -25,44 +27,65 @@ define([
       var self = this;
 
       //get count of successes, dirty for now
-      var totalSuccesses = _.filter(this.intervalElementSet, function(val) {
-        return val.data("meta").get("success");
-      }).length;
+      var totalSuccesses = this.model.get('challenge_successes').length;
 
-      var indexSuccess = 0;
 
-      _.each(this.intervalElementSet, function(val, index) {
-        if (index === 1) console.log('thur', val.data("meta"));
+      var indexSuccess = 0,
+          indexBlank = 0,
+          indexFailure = 0,
+          challengeLength = this.model.get('challenge_duration');
 
-        var success = val.data('meta').get("success");
+      _.each(this.intervalElementSet, function(months, monthIndex) {
+        _.each(months, function(val, index) {
 
-        coord = self.computeThermoPosition(val, index, indexSuccess, success, totalSuccesses);
+
+        var success = val.data('meta').success;
+        var blank = val.data('meta').blank;
+
+        coord = self.computeThermoPosition(index * (monthIndex + 1), success, blank, indexSuccess, indexFailure, indexBlank, totalSuccesses, challengeLength);
 
         if (success) {
           indexSuccess++;
         }
+        else if (blank) {
+          indexBlank++;
+        }
+        else {
+          indexFailure++;
+        }
 
         val
           .attr({
-            stroke: 'none'
+            stroke: 'none',
+            r: 0
           })
           .animate(_.extend(coord, {
-            height:20,
-            width: 5
+            height: self.size['height'],
+            width: self.size['width']
           }), 500);
+        });
 
       });
     },
 
-    computeThermoPosition: function(val, index, indexSuccess, isSuccess, numSuccess) {
-      var x, y;
+    computeThermoPosition: function(currentIndex, isSuccess, isBlank, indexSuccess, indexFailure, indexBlank, totalSuccesses, challengeLength) {
+      var x;
 
-      x = isSuccess ? 0 + indexSuccess * 5 : 0 + (numSuccess + (index - indexSuccess)) * 5;
+      var width = this.size['width'];
 
+      if (isSuccess) {
+        x = indexSuccess * width;
+      }
+      else if (isBlank) {
+        x = (totalSuccesses * width) + ((challengeLength - totalSuccesses) * width) + (indexBlank * width);
+      }
+      else {
+        x = (totalSuccesses * width) + (indexFailure * width);
+      }
       return {
         x: x,
         y: 0,
-        height: isSuccess ? 20 : 22
+        height: isSuccess ? this.size['height'] : 22
       };
     }
 

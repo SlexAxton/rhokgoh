@@ -28,13 +28,14 @@ require({
     }
 
     var data = resp.data;
-
+    console.log('data', data);
     env.set({
       interval_type : data.interval_types[ resp.data.interval_type ],
       interval_offset : data.interval_offset,
       challenge_duration : data.challenge_duration,
       interval_start : data.interval_start,
       challenge : data.challenge,
+      challenge_successes: data.challenge_successes,
       remaining_challenge_duration: 47,
       amount_raised: 77,
       amount_potential: 377,
