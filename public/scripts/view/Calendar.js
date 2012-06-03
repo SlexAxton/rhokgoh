@@ -19,15 +19,6 @@ define([
       $('svg').attr('class', this.name);
     },
 
-    events : {
-      "click" : "triggerStateChange"
-    },
-    
-    triggerStateChange : function () {
-      console.log(this.el);
-      window.rhokgoh.state.set({state: 'thermo'});
-    },
-
     //transform this set into a calendar
     transform : function () {
       var padding = 10;
