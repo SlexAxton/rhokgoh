@@ -20,22 +20,24 @@ function checkin(id, day) {
 }
 
 $(function () {
+  var daysBack = 20 + Math.floor((Math.random()*30)+1);
+  var startDate = moment().subtract('days', daysBack);
   $.ajax({
     type: 'POST',
     url: '/api/challenge',
     data: {
       name : 'My Name!',
-      description : 'Yay! Description!'
+      description : 'Yay! Description!',
+      start : startDate.format('YYYY-MM-DD')
     },
     success: function (data) {
       var id = data.results[0]._id;
-      var randomNumber = Math.floor((Math.random()*20)+1);
       var i;
       $('#container').html('Created: <a href="/challenge/' + id + '">' + id + '</a>');
 
-      for (i=0; i < randomNumber; i++) {
-        if (Math.random() < 0.7) {
-          checkin(id, moment().add('days', i).format('YYYY-MM-DD'));
+      for (i=0; i < daysBack; i++) {
+        if (Math.random() < 0.75) {
+          checkin(id, moment(startDate).add('days', i).format('YYYY-MM-DD'));
         }
       }
     },

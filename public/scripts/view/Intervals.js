@@ -1,13 +1,14 @@
 /* Parent View to switch between Calendar and Thermo views */
 define([
+  'env',
   'state',
   'backbone',
   'underscore',
   '3rd/jquery.fancybox',
   '3rd/raphael',
-  'View/Calendar',
-  'View/Thermo'
-], function (state, Backbone, _, $, Raphael, CalendarView, ThermoView, intervalStateTmpl) {
+  'view/Calendar',
+  'view/Thermo'
+], function (env, state, Backbone, _, $, Raphael, CalendarView, ThermoView, intervalStateTmpl) {
   return Backbone.View.extend({
 
     initialize : function () {
@@ -71,6 +72,7 @@ define([
     },
 
     makePledge : function (e) {
+      var self = this;
       FB.login(function (response) {
         if (response.authResponse) {
           $.fancybox.open({
@@ -82,7 +84,8 @@ define([
             minWidth: 540,
             switchContentOnly : true,
             type : 'iframe',
-            href : 'http://local.rhokgoh.com/pledge?accessToken=' + response.authResponse.accessToken
+            href : env.get('api_base_url').replace('/api/','') + '/pledge?accessToken=' + response.authResponse.accessToken + '&id=' +
+              self.model.get('challenge_id')
           });
         }
       });
@@ -100,7 +103,7 @@ define([
             minWidth: 540,
             switchContentOnly : true,
             type : 'iframe',
-            href : 'http://local.rhokgoh.com/challenge?accessToken=' + response.authResponse.accessToken
+            href : env.get('api_base_url').replace('/api/','') + '/challenge?accessToken=' + response.authResponse.accessToken
           });
         }
       });

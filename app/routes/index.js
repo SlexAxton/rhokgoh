@@ -33,11 +33,12 @@ exports.challenge_form = function (req, res) {
 
 exports.pledge_form = function (req, res) {
   var options = require('../../config/local/rhokgoh.json');
-  options.challenge_id = req.params.id;
+  options.challenge_id = req.param('id');
   res.render('pledgeform', {
     title : 'Pledge',
     access_token : req.param('accessToken', ''),
     built : req.query.servebuild,
-    options : JSON.stringify(options)
+    options : JSON.stringify(options),
+    challenge_id : req.params.id
   });
 };

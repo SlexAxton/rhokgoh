@@ -53,13 +53,70 @@ svg {
     -o-transition: all .5s;
 }
 
-.rg-outer {
-  background-color: #494745;
-  padding: 10px;
-  overflow: hidden;
-  zoom: 1;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #494745;
+.rg-content-primary {
+  position: relative;
+}
+
+.calendar_legend ul {
+  list-style-type: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  padding: 5px 0 0 80px;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.calendar_legend ul li:first {
+  margin-left: 30px;
+}
+.calendar_legend ul li {
+  float: left;
+  font-size: 12px;
+  line-height: 20px;
+  margin-left: 10px;
+}
+
+.calendar_legend .legend_today:before{
+  content: " ";
+  display: block;
+  width: 20px;
+  margin-right: 3px;
+  height: 20px;
+  float: left;
+  background-color: #FFBF53;
+}
+
+.calendar_legend .legend_miss:before{
+  content: " ";
+  display: block;
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
+  float: left;
+  background-color: rgba(100,100,100,0.33);
+}
+
+.calendar_legend .legend_potential:before{
+  content: " ";
+  display: block;
+  margin-right: 3px;
+  border: 1px solid rgba(203, 203, 203, .1);
+  width: 20px;
+  height: 20px;
+  float: left;
+  background-color: #DFDFDF;
+}
+
+.calendar_legend .legend_success:before{
+  content: " ";
+  display: block;
+  width: 20px;
+  margin-right: 3px;
+  height: 20px;
+  float: left;
+  background-color: rgba(125,192,79,1);
 }
 .rg-header-summary {
   padding: 10px 0;
@@ -175,7 +232,7 @@ svg {
 .rg-content-primary {
   float: left;
   width: 60%;
-  min-height: 300px;
+  min-height: 425px;
   background-color: #DDDDCF;
 }
 .rg-content-secondary {
@@ -232,11 +289,10 @@ svg {
 .rg-form-fieldgroup {
   margin: 0 auto;
   padding: 0;
-  width: 100%;
+  width: 50%;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: #494745;
-  overflow: visible;
 }
 .rg-form-fieldgroup input {
   font-size: 16px;

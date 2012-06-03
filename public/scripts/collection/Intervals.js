@@ -3,7 +3,7 @@ define([
   'backbone',
   'moment',
   'underscore',
-  'Model/Interval',
+  'model/Interval',
   'util/tzOffset'
 ], function (env, Backbone, moment, _, IntervalModel, tzOffset) {
   var res = Backbone.Collection.extend({
@@ -88,7 +88,9 @@ define([
 
     // Set the winning ones to successful
     _(data.challenge_successes).forEach(function (success) {
-      intervals[success].set({success : true});
+      if (intervals[success]) {
+        intervals[success].set({success : true});
+      }
     });
 
     return intervals;

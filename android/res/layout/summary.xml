@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:orientation="vertical">
+	
+
+		<TextView android:text="@string/summary_header"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+	
+		<TextView android:text="@string/progressLabel"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+
+		<ProgressBar android:id="@+id/progressBar"
+			style="?android:attr/progressBarStyleHorizontal"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:progress="40"
+			android:secondaryProgress="80"
+			android:progressDrawable="@drawable/greenprogress" />
+		
+		<TableLayout android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:stretchColumns="0,1,2"
+			android:padding="3dip">
+			<TableRow>
+			    <TextView android:text="@string/stats_sponsors_header" />
+				<TextView android:text="@string/stats_raised_header" />
+				<TextView android:text="@string/stats_days_header" />
+				<TextView android:text="@string/stats_potential_header" />
+			</TableRow>
+			<TableRow>
+			    <TextView android:text="@string/stats_sponsors_value" />
+				<TextView android:text="@string/stats_raised_value" />
+				<TextView android:text="@string/stats_days_value" />
+				<TextView android:text="@string/stats_potential_value" />
+			</TableRow>
+		</TableLayout>
+		
+				<TextView android:text="@string/checkin_header"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"/>
+		<EditText
+		    android:hint="note"
+		    android:lines="4"
+		    android:layout_height="wrap_content"
+		    android:layout_width="match_parent"
+		    />
+		
+		<Button android:text="@string/button_txt"
+		    android:layout_width="wrap_content"
+		    android:layout_gravity="right"
+			android:layout_height="wrap_content" />
+		
+	</LinearLayout>
