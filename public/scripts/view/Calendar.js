@@ -12,7 +12,7 @@ define([
        return this.transform();
       }
       this.$el.html(this.template(this.collection.toJSON({
-        filter : 'months=3'
+        filter : 'months'
       })));
     },
 

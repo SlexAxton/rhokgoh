@@ -29,7 +29,9 @@ require({
     env.set({
       interval_type : data.interval_types[ resp.data.interval_type ],
       interval_offset : data.interval_offset,
-      challenge_duration : data.challenge_duration
+      challenge_duration : data.challenge_duration,
+      interval_start : data.interval_start,
+      challenge : data.challenge
     });
 
     var mainView = new CalendarView({
