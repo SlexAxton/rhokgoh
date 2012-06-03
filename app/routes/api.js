@@ -50,7 +50,7 @@ exports.routes = function (prefix, app) {
         data : {
           // Alot of these would be input
           interval_type : 'day',
-          interval_offset : startMoment.format('d'),
+          interval_offset : parseInt(startMoment.format('d')),
           interval_start : challenge.start,
           challenge_successes : intervals,
           challenge_duration : challenge.duration,
