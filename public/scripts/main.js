@@ -7,14 +7,16 @@ require({
 },
 [
   'env',
+  'state',
   'jquery',
-  'View/Calendar',
+  'View/Intervals',
   'Model/Interval',
   'Collection/Intervals',
   'globalui/error'
-], function (env, $, CalendarView, IntervalModel, IntervalCollection, globalError) {
+], function (env, state, $, IntervalsView, IntervalModel, IntervalCollection, globalError) {
   var dataError = globalError.dataError;
 
+  //set initial state
   var $dfd = $.ajax({
     url : env.get('api_base_url') + 'fakeData.json'
   });
@@ -34,7 +36,7 @@ require({
       challenge : data.challenge
     });
 
-    var mainView = new CalendarView({
+    var mainView = new IntervalsView({
       el : document.getElementsByTagName('body')[0],
       collection : new IntervalCollection( IntervalCollection.normalize(data) )
     });
