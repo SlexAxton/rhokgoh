@@ -2,6 +2,13 @@ body {
   margin: 0;
   padding: 0;
 }
+#fancybox-overlay {
+  display: none !important;
+}
+#challenge_form {
+  padding: 35px;
+}
+
 .rg-outer {
   background-color: #494745;
   padding: 10px;
