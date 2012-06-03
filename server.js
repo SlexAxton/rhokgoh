@@ -10,8 +10,11 @@ var _ = require('underscore');
 
 var routes = require('./app/routes');
 var api = require('./app/routes/api');
+var twilioroutes = require('./app/routes/twilio');
+
 var mongo = require('mongodb');
 var MongoStore = require('connect-mongo')(express);
+var twilio = require('twilio');
 
 var app = module.exports = express.createServer();
 
@@ -46,6 +49,15 @@ app.configure('production', function(){
 app.get('/', routes.index);
 app.get('/challenge/:id', routes.challenge);
 api.routes('/api', app);
+
+//twilio respond to messages
+app.get('/twilio', twilioroutes.twilio);
+
+// Twilio - Tie into an API/Database that gets messages to send?
+app.get('/twiliosend', twilioroutes.twiliosend);
+
+// Twilio - Tie into an API/Database that gets messages to send?
+app.get('/twiliosendreminder', twilioroutes.twiliosendreminder);
 
 app.listen(80, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
