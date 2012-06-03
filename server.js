@@ -44,7 +44,7 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', routes.index);
-app.get('/fakeData.json', routes.data);
+app.get('/challenge/:id', routes.challenge);
 api.routes('/api', app);
 
 app.listen(80, function(){

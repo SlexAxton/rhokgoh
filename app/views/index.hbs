@@ -3,6 +3,33 @@
   window.rhokgoh = window.rhokgoh || {};
   window.rhokgoh.options = {{{options}}};
 </script>
-<script src="scripts/3rd/raphael.src.js"></script>
-<script src="scripts{{#if built}}-build{{/if}}/require.js" data-main="scripts{{#if built}}-build{{/if}}/main.js"></script>
+{{#unless noapp}}
+<script src="/scripts/3rd/raphael.src.js"></script>
+<script src="/scripts{{#if built}}-build{{/if}}/require.js" data-main="/scripts{{#if built}}-build{{/if}}/main.js"></script>
 <div class="container"></div>
+{{else}}
+This is the challenges home page, it doesn't make that much sense to be here. Try going to a challenge url.
+
+<pre contenteditable><code>
+> curl -d "name=whatever&start=2012-05-15" http://local.rhokgoh.com/api/challenge
+
+# results in something like this:
+
+{"error":false,"results":[{"created":1338701023436,"start":"2012-06-03",
+"interval_type":"day","duration":90,"name":"whatever","description":"",
+"success_dates":[],"_id":"4fcaf4df016dc82621000001"}]}
+
+# Grab the _id and use it in the following:
+
+> curl -d "" http://local.rhokgoh.com/api/challenge/4fcaf55b016dc82621000002/success/2012-05-15
+> curl -d "" http://local.rhokgoh.com/api/challenge/4fcaf55b016dc82621000002/success/2012-05-17
+> curl -d "" http://local.rhokgoh.com/api/challenge/4fcaf55b016dc82621000002/success/2012-05-18
+> curl -d "" http://local.rhokgoh.com/api/challenge/4fcaf55b016dc82621000002/success/2012-05-20
+
+# And put in a few until you get to recently. You can use dates that are close to now if you wanna.
+
+# Then go to the challenge url. example: http://local.rhokgoh.com/challenge/4fcaf55b016dc82621000002
+</code></pre>
+
+{{/unless}}
+
