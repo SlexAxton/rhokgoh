@@ -94,14 +94,42 @@ svg {
   -o-border-radius: 3px;
   border-radius: 3px;
   cursor: pointer;
+  -webkit-transition: all linear .1s;
+  -moz-transition: all linear .1s;
+  -o-transition: all linear .1s;
+  transition: all linear .1s;
 }
 .rg-button-primary {
   background-color: #FFBF53;
   font-weight: bold;
+  text-shadow: 0 1px rgba(255,255,255,.7);
+  -webkit-box-shadow: inset 0 20px 20px rgba(255,255,255,.2), 0 1px 0 rgba(0,0,0,.3), inset 0 1px 0 #FFF;
+  -moz-box-shadow: inset 0 20px 20px rgba(255,255,255,.2), 0 1px 0 rgba(0,0,0,.3), inset 0 1px 0 #FFF;
+  -o-box-shadow: inset 0 20px 20px rgba(255,255,255,.2), 0 1px 0 rgba(0,0,0,.3), inset 0 1px 0 #FFF;
+  box-shadow: inset 0 20px 20px rgba(255,255,255,.2), 0 1px 0 rgba(0,0,0,.3), inset 0 1px 0 #FFF;
+}
+.rg-button-primary:hover,
+.rg-button-primary:active {
+  -webkit-box-shadow: inset 0 20px 20px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.5), inset 0 1px 0 rgba(0,0,0,.5);
+  -moz-box-shadow: inset 0 20px 20px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.5), inset 0 1px 0 rgba(0,0,0,.5);
+  -o-box-shadow: inset 0 20px 20px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.5), inset 0 1px 0 rgba(0,0,0,.5);
+  box-shadow: inset 0 20px 20px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.5), inset 0 1px 0 rgba(0,0,0,.5);
 }
 .rg-button-secondary {
   background-color: #8E8874;
   font-size: 14px;
+  text-shadow: 0 1px rgba(255,255,255,.5);
+  -webkit-box-shadow: inset 0 20px 20px rgba(255,255,255,.2), 0 1px 0 rgba(0,0,0,.3), inset 0 1px 0 #FFF;
+  -moz-box-shadow: inset 0 20px 20px rgba(255,255,255,.2), 0 1px 0 rgba(0,0,0,.3), inset 0 1px 0 #FFF;
+  -o-box-shadow: inset 0 20px 20px rgba(255,255,255,.2), 0 1px 0 rgba(0,0,0,.3), inset 0 1px 0 #FFF;
+  box-shadow: inset 0 20px 20px rgba(255,255,255,.2), 0 1px 0 rgba(0,0,0,.3), inset 0 1px 0 #FFF;
+}
+.rg-button-secondary:hover,
+.rg-button-secondary:active {
+  -webkit-box-shadow: inset 0 20px 20px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.5), inset 0 1px 0 rgba(0,0,0,.5);
+  -moz-box-shadow: inset 0 20px 20px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.5), inset 0 1px 0 rgba(0,0,0,.5);
+  -o-box-shadow: inset 0 20px 20px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.5), inset 0 1px 0 rgba(0,0,0,.5);
+  box-shadow: inset 0 20px 20px rgba(0,0,0,.1), 0 1px 0 rgba(255,255,255,.5), inset 0 1px 0 rgba(0,0,0,.5);
 }
 .rg-header-endorsers {
   clear: both;
@@ -213,6 +241,10 @@ svg {
 .rg-form-fieldgroup input {
   font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
+  -webkit-transition: all linear .2s;
+  -moz-transition: all linear .2s;
+  -o-transition: all linear .2s;
+  transition: all linear .2s;
 }
 .rg-form-fieldgroup input.rg-button-primary {
   width: 60%;
@@ -227,6 +259,18 @@ svg {
   -o-border-radius: 5px;
   border-radius: 5px;
   background-color: #F0EFE9;
+}
+.rg-form-fieldgroup input[type="text"]:focus {
+  outline: none;
+  border-color: #494745;
+  background-color: #FFF9D7;
+}
+.rg-form-fieldgroup input:focus::-webkit-input-placeholder {
+  color: transparent;
+  -webkit-transition: all linear .2s;
+  -moz-transition: all linear .2s;
+  -o-transition: all linear .2s;
+  transition: all linear .2s;
 }
 .rg-form-fieldgroup ul {
   padding: 0;
