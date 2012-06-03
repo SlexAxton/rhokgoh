@@ -61,7 +61,7 @@ define([
           })
           .animate(_.extend(coord, {
             height: self.size['height'],
-            width: self.size['width']
+            width: blank ? 0 : self.size['width']
           }), 500);
         });
 

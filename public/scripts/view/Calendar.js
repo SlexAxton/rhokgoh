@@ -39,7 +39,7 @@ define([
           coords = self.convertIntervalToCoordinate(monthIndex, index);
           var data = val.data('meta');
 
-          var fill = data.blank ? 'rgba(0,0,0,0.1)' : data.success ? 'green' : 'rgba(100,100,100,0.33)';
+          var fill = self.getFillColor(data);
           var stroke = data.blank || data.success ? 'none' : 'rgba(22,22,22,0.1)';
 
           val
@@ -60,6 +60,36 @@ define([
         });
       });
 
+    },
+
+    getFillColor: function(data) {
+      var fill;
+      if (data.blank) {
+        fill = 'rgba(0,0,0,0.1)';
+      }
+      else if (data.success) {
+        fill = 'green';
+      }
+      else {
+
+        var date = new Date(data.day);
+        var today = new Date();
+
+        if ((date.getDate() === today.getDate()) &&
+              (date.getMonth() === today.getMonth()) &&
+              (date.getYear() === today.getYear())) {
+          console.log(data);
+          fill = 'blue';
+        }
+        else if (+date > +today) {
+          fill = 'rgba(233,233,233,1)';
+        }
+        else {
+          fill = 'rgba(100,100,100,0.33)';
+        }
+      }
+
+      return fill;
     },
 
     convertIntervalToCoordinate : function (monthIndex, index) {
