@@ -4,10 +4,13 @@ var _ = require('underscore');
 var moment = require('moment');
 var ObjectID = mongo.ObjectID;
 
+var fb = require('../../lib/fb');
+
 var mongoServer = new mongo.Server('localhost', 27017, { auto_reconnect : true });
 var db = new mongo.Db('goh', mongoServer);
 db.open(function (err, db) {});
 var challenges = db.collection('challenges');
+var usersCollection = db.collection('users');
 
 // only supports get and post... probably good enough
 function router(prefix, app) {
@@ -19,6 +22,28 @@ function router(prefix, app) {
       app.post(prefix + route, cb);
     }
   };
+}
+
+function createChallenge (req, user, hollaback) {
+  challenges.insert(
+    {
+      created : moment().valueOf(),
+      // start should be user local
+      start : req.param('start', moment().format('YYYY-MM-DD')),
+      interval_type : req.param('interval_type', 'day'),
+      duration : req.param('duration', 90),
+      name : req.param('name'),
+      description : req.param('description', ''),
+      // defaulting to blank string for now... but it should probably be required
+      campaign : req.param('campaign', ''),
+      success_dates : [],
+      lat : req.param('lat'),
+      lng : req.param('lng'),
+      uid : user.id
+    },
+    { safe : true },
+    hollaback
+  );
 }
 
 exports.routes = function (prefix, app) {
@@ -90,26 +115,34 @@ exports.routes = function (prefix, app) {
 
   // create a challenge
   app.post('/challenge', function (req, res) {
-    challenges.insert(
-      {
-        created : moment().valueOf(),
-        // start should be user local
-        start : req.param('start', moment().format('YYYY-MM-DD')),
-        interval_type : req.param('interval_type', 'day'),
-        duration : req.param('duration', 90),
-        name : req.param('name'),
-        description : req.param('description', ''),
-        // defaulting to blank string for now... but it should probably be required
-        campaign : req.param('campaign', ''),
-        success_dates : []
-      },
-      { safe : true },
-      function (err, items) {
-        res.json({
-          error : false,
-          results : items
+    // Get the user's FB data using the access token.
+    fb.user(req.param('access_token'), function (err, user) {
+      if (err) {
+        res.json({ error : err, results : [] });
+      }
+      else {
+        usersCollection.find({ uid : user.id }).toArray(function (err, users) {
+          if (users.length === 1) {
+            createChallenge(req, user, function (err, items) {
+              res.json({ error : false, results : items })
+            });
+          }
+          else {
+            usersCollection.insert({
+              uid : user.id,
+              email : req.param('email'),
+              phone_number : req.param('phone_number'),
+              name : req.param('name')
+            },
+            { safe : true },
+            function (err, users) {
+              createChallenge(req, user, function (err, items) {
+                res.json({ error : false, results : items });
+              });
+            });
+          }
         });
       }
-    );
+    });
   });
 };
