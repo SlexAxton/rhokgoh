@@ -5,6 +5,7 @@
   zoom: 1;
   font-family: Arial, Helvetica, sans-serif;
   color: #494745;
+  width: 920px;
 }
 
 a {
@@ -67,7 +68,7 @@ svg {
   -moz-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 .rg-button-primary {
   background-color: #FFBF53;
@@ -255,5 +256,5 @@ svg {
 #rg-form-field-challenge {
   display: block;
   margin-top: 15px;
-  width: 100%;  
+  width: 100%;
 }
