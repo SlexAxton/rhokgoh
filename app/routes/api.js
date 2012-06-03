@@ -25,25 +25,37 @@ function router(prefix, app) {
 }
 
 function createChallenge (req, user, hollaback) {
-  challenges.insert(
-    {
-      created : moment().valueOf(),
-      // start should be user local
-      start : req.param('start', moment().format('YYYY-MM-DD')),
-      interval_type : req.param('interval_type', 'day'),
-      duration : req.param('duration', 90),
-      name : req.param('name'),
-      description : req.param('description', ''),
-      // defaulting to blank string for now... but it should probably be required
-      campaign : req.param('campaign', ''),
-      success_dates : [],
-      lat : req.param('lat'),
-      lng : req.param('lng'),
-      uid : user.id
-    },
-    { safe : true },
-    hollaback
-  );
+  challenges.find({ uid : user.id }).toArray(function (err, items) {
+    // LOL HACKZ
+    var shortkey = 65; // 'A'
+    for (var x = 0; x < items.length; x++) {
+      var item = items[x];
+      if (item.shortkey === String.fromCharCode(shortkey)) {
+        shortkey++;
+      }
+    }
+
+    challenges.insert(
+      {
+        created : moment().valueOf(),
+        // start should be user local
+        start : req.param('start', moment().format('YYYY-MM-DD')),
+        interval_type : req.param('interval_type', 'day'),
+        duration : req.param('duration', 90),
+        name : req.param('name'),
+        description : req.param('description', ''),
+        // defaulting to blank string for now... but it should probably be required
+        campaign : req.param('campaign', ''),
+        success_dates : [],
+        lat : req.param('lat'),
+        lng : req.param('lng'),
+        uid : user.id,
+        shortkey : String.fromCharCode(shortkey)
+      },
+      { safe : true },
+      hollaback
+    );
+  });
 }
 
 exports.routes = function (prefix, app) {
@@ -67,7 +79,7 @@ exports.routes = function (prefix, app) {
       var intervals = [];
       _(challenge.success_dates).forEach(function (successDate) {
         intervals.push(
-          (moment(successDate) - startMoment) / moment.duration(1, 'days')
+          Math.round((moment(successDate) - startMoment) / moment.duration(1, 'days'))
         );
       });
       res.json({
