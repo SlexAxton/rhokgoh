@@ -25,6 +25,7 @@ exports.challenge_form = function (req, res) {
   options.challenge_id = req.params.id;
   res.render('challengeform', {
     title : 'Create a Challenge',
+    access_token : req.param('accessToken', ''),
     built : req.query.servebuild,
     options : JSON.stringify(options)
   });

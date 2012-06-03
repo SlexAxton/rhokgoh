@@ -42,7 +42,8 @@ twilioconfig.mynumber = '+15551234455';
 module.exports = twilioconfig;
 ---END--
 
+Facebook Application ID - 438527712837758
+
 Mongo
------
 
 If your MongoDB gets messed up, you can drop the challenges collection by running ```dropchallenges.sh```

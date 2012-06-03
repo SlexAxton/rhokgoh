@@ -14,23 +14,6 @@ define([
       state.bind('change', this.stateChange, this);
     },
 
-    events: {
-      "click .rg-button-secondary" : "makeChallenge"
-    },
-    makeChallenge : function (e) {
-      $.fancybox.open({
-        autoSize : false,
-        fitToView : false,
-        fixed : false,
-        autoCenter : false,
-        padding : 0,
-        minWidth: 700,
-        switchContentOnly : true,
-        type : 'iframe',
-        href : 'http://local.rhokgoh.com/challenge'
-      });
-    },
-
     render: function () {
       console.log(this.collection.toJSON({filter:'months'}));
 
@@ -79,7 +62,44 @@ define([
       }
 
       viewToRender.render();
-    }
+    },
+
+    events : {
+      "click svg" : "triggerStateChange",
+      "click .rg-button-secondary" : "makeChallenge"
+    },
+
+    makeChallenge : function (e) {
+      FB.login(function (response) {
+        if (response.authResponse) {
+          $.fancybox.open({
+            autoSize : false,
+            fitToView : false,
+            fixed : false,
+            autoCenter : false,
+            padding : 0,
+            minWidth: 700,
+            switchContentOnly : true,
+            type : 'iframe',
+            href : 'http://local.rhokgoh.com/challenge?accessToken=' + response.authResponse.accessToken
+          });
+        }
+      });
+    },
+
+    triggerStateChange : _.throttle(function () {
+
+      var newState = "";
+      if (state.get('state') === 'calendar') {
+        newState = 'thermo';
+      } else {
+        newState = 'calendar';
+      }
+      window.rhokgoh.state.set({state: newState});
+
+      }, 0)
+    ,
+
 
 
     });

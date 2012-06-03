@@ -5,6 +5,7 @@
 </script>
 <script src="/scripts{{#if built}}-build{{/if}}/require.js" data-main="/scripts{{#if built}}-build{{/if}}/form.js"></script>
 <form id="challenge_form" target="" action="" onsubmit="return false;" method="POST" novalidate="novalidate">
+  <input type="hidden" name="access_token" value="{{access_token}}"/>
   <ul class="rg-form-fieldgroup">
     <li>
       <label for="rg-form-field-challenge">I would like to receive donations for each day that I:</label>
