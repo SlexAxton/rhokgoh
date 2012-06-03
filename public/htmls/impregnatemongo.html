@@ -1,0 +1,48 @@
+<html>
+<head>
+  <script src="/scripts/jquery.js"></script>
+  <script src="https://raw.github.com/timrwood/moment/1.6.2/moment.js"></script>
+</head>
+<body>
+
+DONE.
+
+<div id="container"></div>
+
+<script>
+
+function checkin(id, day) {
+  $.ajax({
+    type: 'POST',
+    url: '/api/challenge/' + id + '/success/' + day,
+    dataType: 'json'
+  });
+}
+
+$(function () {
+  $.ajax({
+    type: 'POST',
+    url: '/api/challenge',
+    data: {
+      name : 'My Name!',
+      description : 'Yay! Description!'
+    },
+    success: function (data) {
+      var id = data.results[0]._id;
+      var randomNumber = Math.floor((Math.random()*20)+1);
+      var i;
+      $('#container').html('Created: <a href="/api/challenge/' + id + '">' + id + '</a>');
+
+      for (i=0; i < randomNumber; i++) {
+        if (Math.random() < 0.7) {
+          checkin(id, moment().add('days', i).format('YYYY-MM-DD'));
+        }
+      }
+    },
+    dataType: 'json'
+  });
+});
+</script>
+
+</body>
+</html>
