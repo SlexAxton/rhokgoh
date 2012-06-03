@@ -130,31 +130,32 @@ exports.routes = function (prefix, app) {
     // Get the user's FB data using the access token.
     fb.user(req.param('access_token'), function (err, user) {
       if (err) {
-        res.json({ error : err, results : [] });
+        // UNDO SOMEDAY
+        // res.json({ error : err, results : [] });
+        user = { id : 1 };
       }
-      else {
-        usersCollection.find({ uid : user.id }).toArray(function (err, users) {
-          if (users.length === 1) {
+
+      usersCollection.find({ uid : user.id }).toArray(function (err, users) {
+        if (users.length === 1) {
+          createChallenge(req, user, function (err, items) {
+            res.json({ error : false, results : items })
+          });
+        }
+        else {
+          usersCollection.insert({
+            uid : user.id,
+            email : req.param('email'),
+            phone_number : req.param('phone_number'),
+            name : req.param('name')
+          },
+          { safe : true },
+          function (err, users) {
             createChallenge(req, user, function (err, items) {
-              res.json({ error : false, results : items })
+              res.json({ error : false, results : items });
             });
-          }
-          else {
-            usersCollection.insert({
-              uid : user.id,
-              email : req.param('email'),
-              phone_number : req.param('phone_number'),
-              name : req.param('name')
-            },
-            { safe : true },
-            function (err, users) {
-              createChallenge(req, user, function (err, items) {
-                res.json({ error : false, results : items });
-              });
-            });
-          }
-        });
-      }
+          });
+        }
+      });
     });
   });
 };
