@@ -31,3 +31,15 @@ and then add
 `192.168.50.10  local.rhokgoh.com`
 
 The access the site at: [local.rhokgoh.com](http://local.rhokgoh.com/)
+
+Configure twilio in ./config/local/twilio.js.
+
+example:
+---START: config/local/twilio.js---
+var twilioconfig = {};
+twilioconfig.accountsid = 'Account SID';
+twilioconfig.authtoken = 'Auth Token';
+twilioconfig.hostname = 'example.com';
+twilioconfig.mynumber = '+15551234455';
+module.exports = twilioconfig;
+---END--

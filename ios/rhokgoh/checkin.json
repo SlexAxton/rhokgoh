@@ -1,0 +1,12 @@
+[
+{
+	"campaign_id": 10001,
+	"challenge_id": 1001,
+	"incremental_challenge_met" : false,
+	"comments": "whoops, I smoked today.",
+	"url": "http://howmanyarethere.net/wp-content/uploads/2011/03/smoking.jpg",
+	"lat": 30.2669,
+	"lon": 97.7428,
+	"timestamp": "06-02-2012"
+}
+]

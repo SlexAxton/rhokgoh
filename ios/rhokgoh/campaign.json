@@ -1,0 +1,58 @@
+{
+	"fundraiser_id": 1001,
+    "campaign_id": 10001,
+	"title": "Help motivate me to gain 20 pounds.",
+	"desc": "I need to gain 20 pounds of solid, lean, muscle. Help me reach my goal, while also helping me raise money for African women and children in need of basic essentials.",
+	"lat": 30.2669,
+	"lon": 97.7428,
+	"start_date": "06-01-2012",
+	"end_date": "07-01-2012",
+	"funding_goal_total": 10000.00,
+	"funding_goal_incremental": 10.00,
+	"challenges": [
+		{
+			"id": 10001,
+			"type": 3,
+			"checkin": "daily",
+			"title": "I gotta quit!",
+			"description": "Okay, so it's time for me to finally quit smoking. For every day that I don't smoke, if you'll pledge just a buck, it will not only help motivate me to quit smoking, but also help raise money for those in need.",
+			"fundraiser_id": 1001,
+			"campaign_id": 10001,
+			"lat": 30.2669,
+			"lon": 97.7428,
+			"start_date": "06-01-2012",
+			"end_date": "07-01-2012",
+			"checkins":[
+			{
+				"campaign_id": 10001,
+				"challenge_id": 1001,
+				"incremental_challenge_met" : false,
+				"comments": "whoops, I smoked today.",
+				"url": "http://howmanyarethere.net/wp-content/uploads/2011/03/smoking.jpg",
+				"lat": 30.2669,
+				"lon": 97.7428,
+				"timestamp": "06-02-2012"
+			}
+			],
+			"endorsers":[
+			{
+				"image_url": "http://someserver.com/images/profile.png",
+				"amount": "$2"
+			}
+			]
+		},
+		{
+			"id": 10002,
+			"type": 3,
+			"checkin": "weekly",
+			"title": "Boston Marathon",
+			"description": "Help me keep on track with my training for the Boston Marathon. I'll be running 50 miles each week, for the next 90 days. For every week that I run at least 50 miles, I'm asking for folks to pledge $10 towards my campaign. Thanks for your support!",
+			"fundraiser_id": 1001,
+			"campaign_id": 10001,
+			"lat": 30.2669,
+			"lon": 97.7428,
+			"start_date": "06-01-2012",
+			"end_date": "07-01-2012"
+		}
+	]
+}

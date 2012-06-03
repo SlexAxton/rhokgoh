@@ -1,0 +1,65 @@
+<!-- Campaign -->
+
+[
+    {
+		"fundraiser_id": 1001,
+        "campaign_id": 10001, 
+		"lat": 100.0000,
+		"lon": 100.0000,
+		"timestamp": "06-02-2012",
+		"funding_goal_total": 1,000,
+		"funding_goal_incremental": 10,
+    },
+
+<!-- Challenge -->
+	{
+		"challenge_id": 10002,
+		"challenge_type": 3,
+		"challenge_length": 90,
+		"challenge_checkin": "daily",
+		"description": "I'm gonna quit smoking. For every day that I don't smoke, please pledge $1.00.",
+		"fundraiser_id": 1001,
+		"campaign_id": 10001,
+		"lat": 100.0000,
+		"lon": 100.0000,
+		"timestamp": "06-02-2012"
+	},
+
+<!-- Checkin -->
+	{
+		"campaign_id": 10001,
+		"incremental_challenge_met" : false,
+		"comments": "whoops, I smoked today.",
+		"url": "http://twitter.com",
+		"lat": 100.0000,
+		"lon": 100.0000,
+		"timestamp": "06-02-2012"
+	},
+	
+<!-- Endorsement -->
+	{
+		"user_id": 1000000,
+		"campaign_id": 10001,
+		"lat": 100.0000,
+		"lon": 100.0000,
+		"timestamp": "06-02-2012",
+		"comments": "You go! Don't smoke!"
+	}
+]
+
+
+<!-- Challenge Types... -->
+
+[
+	{
+		"challenge_type_id": 0,
+		"challenge_type": "Quit Smoking"
+	},
+	{
+		"challenge_type_id": 1,
+		"challenge_type": "Run a marathon"
+	},
+		"challenge_type_id": 2,
+		"challenge_type": "Lose 50 pounds"
+	}
+]

@@ -3,11 +3,11 @@ define([
   'state',
   'backbone',
   'underscore',
+  'jquery',
   '3rd/raphael',
   'View/Calendar',
-  'View/Thermo',
-  'hbs!template/intervalStateContainer'
-], function (state, Backbone, _, Raphael, CalendarView, ThermoView, intervalStateTmpl) {
+  'View/Thermo'
+], function (state, Backbone, _, $, Raphael, CalendarView, ThermoView, intervalStateTmpl) {
   return Backbone.View.extend({
 
     initialize : function () {
@@ -15,12 +15,11 @@ define([
     },
 
     render: function () {
-
-      this.$el.append( intervalStateTmpl({}) );
+      console.log(this.collection.toJSON({filter:'months'}));
 
       //empty in memory div for initialization
       var raphaelElement = $('<div/>');
-      this.raphael = Raphael( raphaelElement, 100, 200);
+      this.raphael = Raphael( 'interval_wrapper', 100, 90 * 10);
       this.intervalElements = this.raphael.set();
 
 
@@ -34,7 +33,7 @@ define([
         );
       });
 
-      this.$el.append(raphaelElement);
+      //$('#interval_wrapper').append( this.raphael );
       this.stateChange();
 
     },
