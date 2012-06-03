@@ -17,10 +17,11 @@ exports.twilio = function(req, res){
       }
       returnmsg = 'Great! I have updated your goal for today. Only {numdaysleft} to go!';
       break;
-    case '2': /* logic to find out if user has multiple open challenges */
-      returnmsg = 'Get on it! Another reminder will be sent 2 hours.';
-      break;
-    case '3': /* logic to find out if user has multiple open challenges */
+    case '2':
+      if (multitask) {
+        returnmsg = 'You currently have multiple tasks running. Prefix your response with Task # {listoftasks}'
+        break;
+      }
       returnmsg = 'Boo! This has set you back 3 days, you now have {numdaysleft} to go!';
       break;
     case 'stop':
@@ -33,22 +34,19 @@ exports.twilio = function(req, res){
       break;
     case 'commands':
       /* logic to find out if user has multiple open challenges */
-      returnmsg = '(1) - Complete challenge for today\n(2) - Get reminder in 2 hours for your task\n(3) - Did not complete task today\n(challenges) - List of challenges and short-versions\n(commands) - This list of commands\n(stop)Stop receiving these messages';
+      returnmsg = '(1) - Complete challenge for today\n(2) - Did not complete achieve my goal today\n(challenges) - List of challenges and short-versions\n(commands) - This list of commands\n(stop)Stop receiving these messages';
       break;
     default:
       firstChar = body.charAt( 0 );
       lastChar = body.charAt( body.length - 1 );
       currentTaskShort = _.pluck(currentTasks,0);
-      possibleOptions = ['1','2','3']
+      possibleOptions = ['1','2']
       if (body.length == 2 && _.indexOf(currentTaskShort,firstChar) != -1 && _.indexOf(possibleOptions,lastChar) != -1) { //only if 2 chars long
         switch (lastChar) {
-          case '1': /* logic to find out if user has multiple open challenges */
+          case '1':
             returnmsg = 'Great! I have updated your goal for today. Only {numdaysleft} to go!';
             break;
-          case '2': /* logic to find out if user has multiple open challenges */
-            returnmsg = 'Get on it! Another reminder will be sent 2 hours.';
-            break;
-          case '3': /* logic to find out if user has multiple open challenges */
+          case '2':
             returnmsg = 'Boo! This has set you back 3 days, you now have {numdaysleft} to go!';
             break;
           default:
@@ -109,14 +107,12 @@ exports.twiliosendreminder = function(req, res) {
     var taskchar = notifyList[user][1];
     var spacer = '';
     var yesmsg = '1';
-    var notyetmsg = '2';
-    var nomsg = '3';
+    var nomsg = '2';
     if (multitask) {
       yesmsg = taskchar + spacer + yesmsg;
       nomsg = taskchar + spacer + nomsg;
-      notyetmsg = taskchar + spacer + notyetmsg;
     }
-    var remindmsg = 'Hey ' + remindname + ', Did you ' + taskname + ' today?\n"' + yesmsg + '" for yes\n"' + notyetmsg + '" for not yet (reminder in 2hours)\n"' + nomsg + '" for no :[';
+    var remindmsg = 'Hey ' + remindname + ', Did you ' + taskname + ' today?\n"' + yesmsg + '" for yes\n"' + nomsg + '" for no :[';
     phone.sendSms(remindphone, remindmsg, null, function(sms) {
         sms.on('processed', function(reqParams, response) {
           console.log('Message processed, request params follow');
