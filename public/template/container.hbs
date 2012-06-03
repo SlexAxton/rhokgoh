@@ -1,0 +1,52 @@
+<div class="rg-outer">
+  <div class="rg-header">
+    <div class="rg-header-primary">
+      <div class="rg-header-summary">{{number_of_pledgers}} people have pledged ${{daily_pledge_total}} if {{challenger_name}} doesn't smoke today.</div>
+      <ul class="rg-header-endorsers">
+        {{#each pledgers}}
+        <li>
+          <dl>
+            <dt>{{name}}</dt>
+            <dd class="rg-header-endorsers-avi"><img src="{{imgUrl}}" alt="" /></dd>
+            <dd class="rg-header-endorsers-pledge">$<b>{{pledge_amount}}</b></dd>
+          </dl>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    <ul class="rg-header-actions">
+      <li><a class="rg-button-primary" href="#">Make a Pledge</a></li>
+      <li><a class="rg-button-secondary" href="#">Start your own challenge</a></li>
+    </ul>
+  </div><!-- end rg-header -->
+  <div class="rg-content">
+    <div class="rg-content-primary">
+      <ul class="rg-content-primary-stats">
+        <li>
+          <dl>
+            <dt>Raised</dt>
+            <dd>${{amount_raised}}</dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>Days to Go</dt>
+            <dd>{{remaining_challenge_duration}}</dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>Potential</dt>
+            <dd>${{amount_potential}}</dd>
+          </dl>
+        </li>
+      </ul>
+      <div class="rg-content-primary-viz">
+        <div id="interval_wrapper"></div>      
+    </div>
+    </div>
+    <div class="rg-content-secondary">
+      <!-- fb comments go here -->
+    </div>
+  </div><!-- end rg-content -->
+</div><!-- end rg-outer -->
