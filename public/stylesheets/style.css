@@ -1,3 +1,14 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+#fancybox-overlay {
+  display: none !important;
+}
+#challenge_form {
+  padding: 35px;
+}
+
 .rg-outer {
   background-color: #494745;
   padding: 10px;
@@ -41,6 +52,14 @@ svg {
     -o-transition: all .5s;
 }
 
+.rg-outer {
+  background-color: #494745;
+  padding: 10px;
+  overflow: hidden;
+  zoom: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #494745;
+}
 .rg-header-summary {
   padding: 10px 0;
 }
@@ -184,10 +203,11 @@ svg {
 .rg-form-fieldgroup {
   margin: 0 auto;
   padding: 0;
-  width: 50%;
+  width: 100%;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: #494745;
+  overflow: visible;
 }
 .rg-form-fieldgroup input {
   font-size: 14px;
@@ -261,5 +281,14 @@ svg {
 #rg-form-field-challenge {
   display: block;
   margin-top: 15px;
-  width: 100%;
+  width: 90%;
+}
+.rg-duration-selected label {
+  background-color: #FFBF53;
+}
+.fb-like,
+.fb-comments {
+  display: block !important;
+  width: 340px;
+  margin: 14px auto;
 }

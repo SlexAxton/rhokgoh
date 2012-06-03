@@ -75,36 +75,43 @@ exports.routes = function (prefix, app) {
   app.get('/challenge/:id', function (req, res) {
     challenges.find({ _id : new ObjectID(req.params.id) }).toArray(function (err, items) {
       var challenge = items[0];
-      var startMoment = moment(challenge.start);
-      var intervals = [];
-      _(challenge.success_dates).forEach(function (successDate) {
-        intervals.push(
-          Math.round((moment(successDate) - startMoment) / moment.duration(1, 'days'))
-        );
-      });
-      res.json({
-        error : !!err,
-        data : {
-          // Alot of these would be input
-          interval_type : 'day',
-          interval_offset : parseInt(startMoment.format('d')),
-          interval_start : challenge.start,
-          challenge_successes : intervals,
-          challenge_duration : challenge.duration,
-          interval_types : {
-            'day' : {
-              duration : 86400000,
-              name : 'Day',
-              rate_phrase : "once per day"
+      if (challenge) {
+        var startMoment = moment(challenge.start);
+        var intervals = [];
+        _(challenge.success_dates).forEach(function (successDate) {
+          intervals.push(
+            Math.round((moment(successDate) - startMoment) / moment.duration(1, 'days'))
+          );
+        });
+        res.json({
+          error : !!err,
+          data : {
+            // Alot of these would be input
+            interval_type : 'day',
+            interval_offset : parseInt(startMoment.format('d')),
+            interval_start : challenge.start,
+            challenge_successes : intervals,
+            challenge_duration : challenge.duration,
+            interval_types : {
+              'day' : {
+                duration : 86400000,
+                name : 'Day',
+                rate_phrase : "once per day"
+              }
+            },
+            challenge : {
+              id : challenge._id,
+              name : challenge.name,
+              description : challenge.description
             }
-          },
-          challenge : {
-            id : challenge._id,
-            name : challenge.name,
-            description : challenge.description
           }
-        }
-      });
+        });
+      } else {
+        res.json({
+          error : true,
+          data : {}
+        });
+      }
     });
   });
 

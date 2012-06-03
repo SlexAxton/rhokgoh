@@ -3,7 +3,7 @@ define([
   'state',
   'backbone',
   'underscore',
-  'jquery',
+  '3rd/jquery.fancybox',
   '3rd/raphael',
   'View/Calendar',
   'View/Thermo'
@@ -65,11 +65,49 @@ define([
     },
 
     events : {
-      "click svg" : "triggerStateChange"
+      "click svg" : "triggerStateChange",
+      "click .rg-button-secondary" : "makeChallenge",
+      "click .rg-button-primary" : "makePledge"
+    },
+
+    makePledge : function (e) {
+      FB.login(function (response) {
+        if (response.authResponse) {
+          $.fancybox.open({
+            autoSize : false,
+            fitToView : false,
+            fixed : false,
+            autoCenter : false,
+            padding : 0,
+            minWidth: 700,
+            switchContentOnly : true,
+            type : 'iframe',
+            href : 'http://local.rhokgoh.com/pledge?accessToken=' + response.authResponse.accessToken
+          });
+        }
+      });
+    },
+
+    makeChallenge : function (e) {
+      FB.login(function (response) {
+        if (response.authResponse) {
+          $.fancybox.open({
+            autoSize : false,
+            fitToView : false,
+            fixed : false,
+            autoCenter : false,
+            padding : 0,
+            minWidth: 700,
+            switchContentOnly : true,
+            type : 'iframe',
+            href : 'http://local.rhokgoh.com/challenge?accessToken=' + response.authResponse.accessToken
+          });
+        }
+      });
     },
 
     triggerStateChange : _.throttle(function () {
-      
+
       var newState = "";
       if (state.get('state') === 'calendar') {
         newState = 'thermo';
