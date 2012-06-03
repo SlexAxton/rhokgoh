@@ -20,7 +20,7 @@ define([
 
       //empty in memory div for initialization
       var raphaelElement = $('<div/>');
-      this.raphael = Raphael( raphaelElement, 100, 200);
+      this.raphael = Raphael( raphaelElement, 100, 90 * 10);
       this.intervalElements = this.raphael.set();
 
 

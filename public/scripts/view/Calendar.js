@@ -14,6 +14,7 @@ define([
 
     render : function () {
       this.transform();
+      $('svg').attr('class', this.name);
     },
 
     //transform this set into a calendar
@@ -34,17 +35,25 @@ define([
               fill: success ? '#BADA55' : '#888'
             }
           ),
-          100);
+          500);
       });
 
     },
 
     convertDateToCoordinate : function (date, index) {
-      var dateObj = new Date(date);
+      var dateObj = new Date(date),
+          month = 0;
+
+      if (index > 61) {
+        month = 2;
+      }
+      else if (index > 31) {
+        month = 1;
+      }
 
       return {
-        x: dateObj.getDay() * 10,
-        y: (0 | dateObj.getDate() / 7) * 10
+        x: (dateObj.getDay() * 10) + month * 80,
+        y: ((0 | dateObj.getDate() / 7) * 10)
       };
     }
 
