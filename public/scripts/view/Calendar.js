@@ -12,7 +12,7 @@ define([
     },
     name: 'calendar',
 
-    daySize: 20,
+    daySize: 23,
 
     render : function () {
       this.transform();
@@ -30,25 +30,57 @@ define([
           coords = self.convertIntervalToCoordinate(monthIndex, index);
           var data = val.data('meta');
 
-          fill = data.blank ? 'rgba(0,0,0,0.1)' : data.success ? '#bada55' : '#222';
+          var fill = self.getFillColor(data);
+          var stroke = data.blank || data.success ? 'none' : 'rgba(22,22,22,0.1)';
+
           val
           .attr({
             fill: fill,
-            stroke: 'none',
-            r: 2
+            stroke: stroke
           })
           .animate(
             _.extend(
               coords,
               {
                 height: self.daySize,
-                width: self.daySize
+                width: self.daySize,
+                'stroke-width': 1
               }
             ),
             500);
         });
       });
 
+    },
+
+    getFillColor: function(data) {
+      var fill;
+      if (data.blank) {
+        fill = 'rgba(0,0,0,0.1)';
+      }
+      else if (data.success) {
+        fill = 'green';
+      }
+      else {
+
+        var date = new Date(data.day);
+        var today = new Date();
+
+        if ((date.getDate() === today.getDate()) &&
+              (date.getMonth() === today.getMonth()) &&
+              (date.getYear() === today.getYear())) {
+          console.log(data);
+          fill = 'blue';
+        }
+        else if (+date > +today) {
+          fill = 'rgba(233,233,233,1)';
+        }
+        else {
+          fill = 'rgba(100,100,100,0.33)';
+        }
+      }
+
+      return fill;
     },
 
     convertIntervalToCoordinate : function (monthIndex, index) {

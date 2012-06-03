@@ -8,13 +8,14 @@ require({
 [
   'env',
   'state',
+  'window',
   'jquery',
   'View/Intervals',
   'Model/Interval',
   'Collection/Intervals',
   'globalui/error',
   'hbs!template/container'
-], function (env, state, $, IntervalsView, IntervalModel, IntervalCollection, globalError, containerTmpl) {
+], function (env, state, window, $, IntervalsView, IntervalModel, IntervalCollection, globalError, containerTmpl) {
   var dataError = globalError.dataError;
 
   //set initial state
@@ -54,8 +55,26 @@ require({
       model: env
     });
 
+    window.fbAsyncInit = function () {
+      FB.init({
+        appId      : '438527712837758', // App ID
+        channelUrl : env.get('api_base_url').replace('api/','') + 'channel.html', // Channel File
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        xfbml      : true  // parse XFBML
+      });
+    };
+
     document.getElementsByTagName('body')[0].innerHTML = containerTmpl(env.toJSON());
 
+    // Load the SDK Asynchronously
+    (function(d){
+      var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement('script'); js.id = id; js.async = true;
+      js.src = "//connect.facebook.net/en_US/all.js";
+      ref.parentNode.insertBefore(js, ref);
+    }(window.document));
 
     mainView.render();
   });

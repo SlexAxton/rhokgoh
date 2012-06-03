@@ -62,7 +62,25 @@ define([
       }
 
       viewToRender.render();
-    }
+    },
+
+    events : {
+      "click svg" : "triggerStateChange"
+    },
+
+    triggerStateChange : _.throttle(function () {
+      
+      var newState = "";
+      if (state.get('state') === 'calendar') {
+        newState = 'thermo';
+      } else {
+        newState = 'calendar';
+      }
+      window.rhokgoh.state.set({state: newState});
+
+      }, 0)
+    ,
+
 
 
     });
