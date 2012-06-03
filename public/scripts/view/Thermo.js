@@ -12,7 +12,7 @@ define([
     },
     name: 'thermo',
 
-    size: {height: 40, width: 5},
+    size: {height: 40, width: 4},
 
     render : function () {
       this.transform();

@@ -12,7 +12,7 @@ define([
     },
     name: 'calendar',
 
-    daySize: 25,
+    daySize: 23,
 
     render : function () {
       this.transform();
