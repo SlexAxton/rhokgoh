@@ -9,6 +9,7 @@ var hbs = require('hbs');
 var _ = require('underscore');
 
 var routes = require('./app/routes');
+var api = require('./app/routes/api');
 var mongo = require('mongodb');
 var MongoStore = require('connect-mongo')(express);
 
@@ -44,6 +45,7 @@ app.configure('production', function(){
 // Routes
 app.get('/', routes.index);
 app.get('/fakeData.json', routes.data);
+api.routes('/api', app);
 
 app.listen(80, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
