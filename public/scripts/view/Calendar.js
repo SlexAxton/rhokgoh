@@ -13,7 +13,6 @@ define([
     name: 'calendar',
 
     render : function () {
-
       this.transform();
     },
 
