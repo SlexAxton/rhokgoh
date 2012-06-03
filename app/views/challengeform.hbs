@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="/stylesheets/jquery-ui.css"/>
+<script>
+  window.rhokgoh = window.rhokgoh || {};
+  window.rhokgoh.options = {{{options}}};
+</script>
+<script src="/scripts{{#if built}}-build{{/if}}/require.js" data-main="/scripts{{#if built}}-build{{/if}}/form.js"></script>
+<form id="challenge_form" target="" action="" onsubmit="return false;" method="POST" novalidate="novalidate">
+  <ul class="rg-form-fieldgroup">
+    <li>
+      <label for="rg-form-field-challenge">I would like to receive donations for each day that I:</label>
+      <input id="rg-form-field-challenge" type="text" name="name" placeholder="Example: Eat healthy" maxlength="50">
+    </li>
+    <li class="rg-form-text">
+      <label for="rg-form-field-start-date">Start date:</label>
+      <input id="rg-form-field-start-date" type="text" name="start" placeholder="YYYY-MM-DD">
+    </li>
+    <li class="rg-form-radio">
+      <span class="rg-form-field-label"># of days:</span>
+      <ul id="rg-form-field-duration">
+        <li>
+          <label for="rg-form-field-duration-30">30</label>
+          <input id="rg-form-field-duration-30" type="radio" name="duration" value="30" title="30">
+        </li>
+        <li>
+          <label for="rg-form-field-duration-60">60</label>
+          <input id="rg-form-field-duration-60" type="radio" name="duration" value="60" title="60">
+        </li>
+        <li>
+          <label for="rg-form-field-duration-90">90</label>
+          <input id="rg-form-field-duration-90" type="radio" name="duration" value="90" title="90">
+        </li>
+      </ul>
+    </li>
+    <li>
+      <input id="rg-form-field-reminder" type="checkbox" name="reminder">
+      <label for="rg-form-field-reminder">Remind me with a daily text message</label>
+    </li>
+    <li class="rg-form-text">
+      <label for="rg-form-field-reminder-phone">Phone #:</label>
+      <input id="rg-form-field-reminder-phone" type="text" name="phone" placeholder="999-999-9999">
+    </li>
+    <li class="rg-form-text">
+      <label for="rg-form-field-reminder-time">Time:</label>
+      <input id="rg-form-field-reminder-time" type="text" name="texttime" placeholder="">
+    </li>
+    <li class="rg-form-actions">
+      <input class="rg-button-primary" id="rg-form-actions-submit" type="submit" name="submit" value="Submit">
+    </li>
+  </ul>
+</form>

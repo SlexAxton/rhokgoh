@@ -3,7 +3,7 @@ define([
   'state',
   'backbone',
   'underscore',
-  'jquery',
+  '3rd/jquery.fancybox',
   '3rd/raphael',
   'View/Calendar',
   'View/Thermo'
@@ -12,6 +12,23 @@ define([
 
     initialize : function () {
       state.bind('change', this.stateChange, this);
+    },
+
+    events: {
+      "click .rg-button-secondary" : "makeChallenge"
+    },
+    makeChallenge : function (e) {
+      $.fancybox.open({
+        autoSize : false,
+        fitToView : false,
+        fixed : false,
+        autoCenter : false,
+        padding : 0,
+        minWidth: 700,
+        switchContentOnly : true,
+        type : 'iframe',
+        href : 'http://local.rhokgoh.com/challenge'
+      });
     },
 
     render: function () {

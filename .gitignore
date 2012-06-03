@@ -3,3 +3,4 @@ logs/*.*
 .vagrant
 public/scripts-build
 .DS_store
+*.swp

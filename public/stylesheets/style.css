@@ -35,6 +35,14 @@ svg {
     -o-transition: all .5s;
 }
 
+.rg-outer {
+  background-color: #494745;
+  padding: 10px;
+  overflow: hidden;
+  zoom: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #494745;
+}
 .rg-header-summary {
   padding: 10px 0;
 }
@@ -67,7 +75,7 @@ svg {
   -moz-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
-  cursor: pointer; 
+  cursor: pointer;
 }
 .rg-button-primary {
   background-color: #FFBF53;
@@ -178,10 +186,11 @@ svg {
 .rg-form-fieldgroup {
   margin: 0 auto;
   padding: 0;
-  width: 50%;
+  width: 100%;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: #494745;
+  overflow: visible;
 }
 .rg-form-fieldgroup input {
   font-size: 14px;
@@ -255,5 +264,8 @@ svg {
 #rg-form-field-challenge {
   display: block;
   margin-top: 15px;
-  width: 100%;  
+  width: 90%;
+}
+.rg-duration-selected label {
+  background-color: #FFBF53;
 }
