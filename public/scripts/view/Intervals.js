@@ -5,8 +5,8 @@ define([
   'underscore',
   '3rd/jquery.fancybox',
   '3rd/raphael',
-  'View/Calendar',
-  'View/Thermo'
+  'view/Calendar',
+  'view/Thermo'
 ], function (state, Backbone, _, $, Raphael, CalendarView, ThermoView, intervalStateTmpl) {
   return Backbone.View.extend({
 
