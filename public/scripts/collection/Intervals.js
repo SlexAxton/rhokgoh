@@ -13,7 +13,6 @@ define([
 
       // Loop through the data, and find the available months
       _(data).forEach(function (Interval, idx) {
-        console.log( Interval.start );
         var date = Interval.start;
       });
 
@@ -57,11 +56,6 @@ define([
     var intervals = [];
     var start = new Date(data.interval_start + tzOffset);
     for (var i = 0; i < data.challenge_duration; i++) {
-      console.log(new Date(
-          moment(
-            start.getTime() + (86400000*i)
-          ).format('YYYY-MM-DD') + tzOffset
-        ));
       intervals.push(new IntervalModel({
         start : new Date(
           moment(
