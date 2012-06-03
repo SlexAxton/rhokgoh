@@ -207,6 +207,17 @@ svg {
   overflow: hidden;
   zoom: 1;
 }
+.rg-form-fieldgroup li.rg-form-text-double {
+  clear: none;
+  float: left;
+  width: 50%;
+}
+.rg-form-fieldgroup li.rg-form-text-double label {
+  width: 50%;
+}
+.rg-form-fieldgroup li.rg-form-text-double input {
+  width: 25%;
+}
 .rg-form-fieldgroup li ul li {
   display: inline;
   float: left;
