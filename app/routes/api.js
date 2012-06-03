@@ -11,6 +11,7 @@ var db = new mongo.Db('goh', mongoServer);
 db.open(function (err, db) {});
 var challenges = db.collection('challenges');
 var usersCollection = db.collection('users');
+var pledgesCollection = db.collection('pledges');
 
 // only supports get and post... probably good enough
 function router(prefix, app) {
@@ -58,9 +59,94 @@ function createChallenge (req, user, hollaback) {
   });
 }
 
+function createPledge (req, user, hollaback) {
+  pledgesCollection.insert(
+    {
+      created : moment().valueOf(),
+      uid : user.id,
+      challenge : req.param('challenge_id'),
+      amount : req.param('amount'),
+      total : req.param('total'),
+      email : req.param('email'),
+      anonymous : req.param('anonymous') === 'on',
+      reminder : req.param('reminder') === 'on',
+      phone : req.param('phone')
+    },
+    { safe : true },
+    hollaback
+  );
+}
+
 exports.routes = function (prefix, app) {
   // make all api routes start with prefix
   app = router(prefix, app);
+
+  app.get('/pledge', function (req, res) {
+    pledgesCollection.find({}).sort({ created : -1 }).limit(100).toArray(function (err, items) {
+      res.json({
+        results : items
+      });
+    });
+  });
+
+  app.post('/challenge/:challenge/pledge', function (req, res) {
+    // Get the user's FB data using the access token.
+    fb.user(req.param('access_token'), function (err, user) {
+      if (err) {
+        // UNDO SOMEDAY
+        // res.json({ error : err, results : [] });
+        user = { id : 1 };
+      }
+
+      usersCollection.find({ uid : user.id }).toArray(function (err, users) {
+        if (users.length === 1) {
+          createPledge(req, user, function (err, items) {
+            res.json({ error : false, results : items });
+          });
+        }
+        else {
+          usersCollection.insert({
+            uid : user.id,
+            email : req.param('email'),
+            phone_number : req.param('phone'),
+            name : req.param('name')
+          },
+          { safe : true },
+          function (err, users) {
+            createPledge(req, user, function (err, items) {
+              res.json({ error : false, results : items });
+            });
+          });
+        }
+      });
+    });
+  });
+
+  app.get('/pledge/:id', function (req, res) {
+    pledgesCollection.find({ _id : new ObjectID(req.params.id) }).toArray(function (err, items) {
+      var pledge = items[0];
+      if (pledge) {
+        res.json({
+          error : !!err,
+          data : {
+            created : moment().valueOf(),
+            challenge_id : pledge.challenge_id,
+            amount : pledge.amount,
+            total : pledge.total,
+            email : pledge.email,
+            anonymous : pledge.anonymous,
+            reminder : pledge.reminder,
+            phone : pledge.phone
+          }
+        });
+      } else {
+        res.json({
+          error : true,
+          data : {}
+        });
+      }
+    });
+  });
 
   // get a list of challenges, limited to 100, sorted by create time desc
   app.get('/challenge', function (req, res) {

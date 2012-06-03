@@ -46,7 +46,7 @@ require({
     $pForm.submit(function (e) {
       $.ajax({
         type: 'POST',
-        url: env.get('api_base_url') + 'pledge',
+        url: env.get('api_base_url') + 'challenge/' + rhokgoh.env.get('challenge_id') + '/pledge',
         data: $pForm.serialize(),
         dataType: 'json',
         success: function (data) {

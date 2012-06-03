@@ -5,8 +5,8 @@ define([
   'underscore',
   '3rd/jquery.fancybox',
   '3rd/raphael',
-  'View/Calendar',
-  'View/Thermo'
+  'view/Calendar',
+  'view/Thermo'
 ], function (state, Backbone, _, $, Raphael, CalendarView, ThermoView, intervalStateTmpl) {
   return Backbone.View.extend({
 
@@ -71,6 +71,7 @@ define([
     },
 
     makePledge : function (e) {
+      var self = this;
       FB.login(function (response) {
         if (response.authResponse) {
           $.fancybox.open({
@@ -79,10 +80,11 @@ define([
             fixed : false,
             autoCenter : false,
             padding : 0,
-            minWidth: 700,
+            minWidth: 540,
             switchContentOnly : true,
             type : 'iframe',
-            href : 'http://local.rhokgoh.com/pledge?accessToken=' + response.authResponse.accessToken
+            href : 'http://local.rhokgoh.com/pledge?accessToken=' + response.authResponse.accessToken + '&id=' +
+              self.model.get('challenge_id')
           });
         }
       });
@@ -97,7 +99,7 @@ define([
             fixed : false,
             autoCenter : false,
             padding : 0,
-            minWidth: 700,
+            minWidth: 540,
             switchContentOnly : true,
             type : 'iframe',
             href : 'http://local.rhokgoh.com/challenge?accessToken=' + response.authResponse.accessToken
