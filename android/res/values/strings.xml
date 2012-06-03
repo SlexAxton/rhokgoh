@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, HelloAndroidActivity!</string>
+    <string name="app_name">HelloAndroid</string>
+    <string name="progressLabel">Progress</string>
+    <string name="summary_header"><b>Summary</b></string>
+    <string name="checkin_header">Check-in Note</string>
+    <string name="button_txt">Check-In</string>
+    <string name="stats_sponsors_header">Sponsors</string>
+    <string name="stats_raised_header">Raised</string>
+    <string name="stats_days_header">Days</string>
+    <string name="stats_potential_header">Potential</string>
+    <string name="stats_sponsors_value">10</string>
+    <string name="stats_raised_value">$20.00</string>
+    <string name="stats_days_value">30</string>
+    <string name="stats_potential_value">$40.00</string>
+
+</resources>

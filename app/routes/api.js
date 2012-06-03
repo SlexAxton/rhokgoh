@@ -59,6 +59,24 @@ function createChallenge (req, user, hollaback) {
   });
 }
 
+function createPledge (req, user, hollaback) {
+  pledgesCollection.insert(
+    {
+      created : moment().valueOf(),
+      uid : user.id,
+      challenge : req.param('challenge_id'),
+      amount : req.param('amount'),
+      total : req.param('total'),
+      email : req.param('email'),
+      anonymous : req.param('anonymous') === 'on',
+      reminder : req.param('reminder') === 'on',
+      phone : req.param('phone')
+    },
+    { safe : true },
+    hollaback
+  );
+}
+
 exports.routes = function (prefix, app) {
   // make all api routes start with prefix
   app = router(prefix, app);
@@ -72,22 +90,35 @@ exports.routes = function (prefix, app) {
   });
 
   app.post('/challenge/:challenge/pledge', function (req, res) {
-    pledgesCollection.insert({
-      created : moment().valueOf(),
-      amount : req.param('amount'),
-      total : req.param('total'),
-      email : req.param('email'),
-      anonymous : req.param('anonymous') === 'on',
-      reminder : req.param('reminder') === 'on',
-      phone : req.param('phone'),
-      challendge_id : req.params.challenge
-    },
-    { safe : true },
-    function (err, items) {
-      res.json({
-        error : false,
-        results : items
-      })
+    // Get the user's FB data using the access token.
+    fb.user(req.param('access_token'), function (err, user) {
+      if (err) {
+        // UNDO SOMEDAY
+        // res.json({ error : err, results : [] });
+        user = { id : 1 };
+      }
+
+      usersCollection.find({ uid : user.id }).toArray(function (err, users) {
+        if (users.length === 1) {
+          createPledge(req, user, function (err, items) {
+            res.json({ error : false, results : items });
+          });
+        }
+        else {
+          usersCollection.insert({
+            uid : user.id,
+            email : req.param('email'),
+            phone_number : req.param('phone'),
+            name : req.param('name')
+          },
+          { safe : true },
+          function (err, users) {
+            createPledge(req, user, function (err, items) {
+              res.json({ error : false, results : items });
+            });
+          });
+        }
+      });
     });
   });
 
@@ -99,6 +130,7 @@ exports.routes = function (prefix, app) {
           error : !!err,
           data : {
             created : moment().valueOf(),
+            challenge_id : pledge.challenge_id,
             amount : pledge.amount,
             total : pledge.total,
             email : pledge.email,
