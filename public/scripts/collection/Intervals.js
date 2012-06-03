@@ -57,6 +57,11 @@ define([
     var intervals = [];
     var start = new Date(data.interval_start + tzOffset);
     for (var i = 0; i < data.challenge_duration; i++) {
+      console.log(new Date(
+          moment(
+            start.getTime() + (86400000*i)
+          ).format('YYYY-MM-DD') + tzOffset
+        ));
       intervals.push(new IntervalModel({
         start : new Date(
           moment(
@@ -69,7 +74,7 @@ define([
 
     // Set the winning ones to successful
     _(data.challenge_successes).forEach(function (success) {
-      intervals[success].success = true;
+      intervals[success].set({success : true});
     });
 
     return intervals;
