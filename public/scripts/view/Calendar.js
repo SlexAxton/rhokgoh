@@ -11,7 +11,9 @@ define([
       if (false) {
        return this.transform();
       }
-      this.$el.html(this.template(this.collection.toJSON()));
+      this.$el.html(this.template(this.collection.toJSON({
+        filter : 'months=3'
+      })));
     },
 
     transform : function () {}
