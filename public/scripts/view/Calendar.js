@@ -12,7 +12,7 @@ define([
     },
     name: 'calendar',
 
-    daySize: 20,
+    daySize: 23,
 
     render : function () {
       this.transform();
@@ -39,19 +39,21 @@ define([
           coords = self.convertIntervalToCoordinate(monthIndex, index);
           var data = val.data('meta');
 
-          fill = data.blank ? 'rgba(0,0,0,0.1)' : data.success ? '#bada55' : '#222';
+          var fill = data.blank ? 'rgba(0,0,0,0.1)' : data.success ? 'green' : 'rgba(100,100,100,0.33)';
+          var stroke = data.blank || data.success ? 'none' : 'rgba(22,22,22,0.1)';
+
           val
           .attr({
             fill: fill,
-            stroke: 'none',
-            r: 2
+            stroke: stroke
           })
           .animate(
             _.extend(
               coords,
               {
                 height: self.daySize,
-                width: self.daySize
+                width: self.daySize,
+                'stroke-width': 1
               }
             ),
             500);
