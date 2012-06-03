@@ -7,9 +7,14 @@ body {
 }
 #challenge_form,
 #pledge_form {
-  padding: 40px;
+  padding: 30px 40px;
 }
-
+#challenge_form h2,
+#pledge_form h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  font-family: arial;
+}
 .rg-outer {
   background-color: #494745;
   padding: 10px;
