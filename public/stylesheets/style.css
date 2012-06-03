@@ -1,8 +1,219 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.rg-outer {
+  background-color: #494745;
+  padding: 10px;
+  overflow: hidden;
+  zoom: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #494745;
 }
-
-a {
-  color: #00B7FF;
+.rg-header-summary {
+  padding: 10px 0;
+}
+.rg-header-primary {
+  float: left;
+  width: 75%;
+}
+.rg-header-summary {
+  color: #FFF;
+}
+.rg-header-actions {
+  float: right;
+  width: 25%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.rg-header-actions li {
+  margin-bottom: 10px;
+}
+.rg-button-primary,
+.rg-button-secondary {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  text-align: center;
+  color: #000;
+  border: none;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  cursor: pointer; 
+}
+.rg-button-primary {
+  background-color: #FFBF53;
+  font-weight: bold;
+}
+.rg-button-secondary {
+  background-color: #8E8874;
+  font-size: 14px;
+}
+.rg-header-endorsers {
+  clear: both;
+  margin: 10px 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+  zoom: 1;
+}
+.rg-header-endorsers li {
+  background-color: #FFF;
+  display: inline;
+  float: left;
+  margin-right: 1px;
+  padding: 4px;
+}
+.rg-header-endorsers dt {
+  display: none;
+}
+.rg-header-endorsers dl,
+.rg-header-endorsers dd {
+  margin: 0;
+  height: 30px;
+  float: left;
+}
+.rg-header-endorsers dd {
+  width: 30px;
+  text-align: center;
+}
+.rg-header-endorsers dd.rg-header-endorsers-pledge {
+  padding: 7px 0;
+  font-size: 13px;
+}
+.rg-header-endorsers img {
+  max-width: 100%;
+}
+.rg-content {
+  clear: both;
+  background-color: #FFF;
+  overflow: hidden;
+  zoom: 1;
+}
+.rg-content-primary {
+  float: left;
+  width: 60%;
+  min-height: 300px;
+  background-color: #DDDDCF;
+}
+.rg-content-secondary {
+  float: left;
+  width: 40%;
+}
+.rg-content-primary-stats {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background-color: #F0EFE9;
+  overflow: hidden;
+  zoom: 1;
+}
+.rg-content-primary-stats li {
+  float: left;
+  width: 33%;
+  text-align: center;
+  padding: 15px 0;
+  text-shadow: 0 1px #FFF;
+  border-right: 1px solid #CCC;
+  -webkit-box-shadow: 1px 0 0 #FFF;
+  -moz-box-shadow: 1px 0 0 #FFF;
+  -o-box-shadow: 1px 0 0 #FFF;
+  box-shadow: 1px 0 0 #FFF;
+}
+.rg-content-primary-stats li:last-child {
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+}
+.rg-content-primary-stats dl,
+.rg-content-primary-stats dd {
+  margin: 0;
+}
+.rg-content-primary-stats dl {
+  padding: 30px 0 14px;
+}
+.rg-content-primary-stats dd {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 24px;
+  height: 24px;
+  margin-top: -40px;
+}
+.rg-content-primary-stats dt {
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 12px;
+  height: 12px;
+}
+.rg-form-fieldgroup {
+  margin: 0 auto;
+  padding: 0;
+  width: 50%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #494745;
+}
+.rg-form-fieldgroup input {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.rg-form-fieldgroup input[type="text"] {
+  border: 1px solid #CCC;
+  padding: 6px 10px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  background-color: #F0EFE9;
+}
+.rg-form-fieldgroup ul {
+  padding: 0;
+}
+.rg-form-fieldgroup li {
+  clear: both;
+  list-style: none;
+  padding: 15px 0;
+  border-bottom: 1px solid #DDD;
+  overflow: hidden;
+  zoom: 1;
+}
+.rg-form-fieldgroup li ul li {
+  display: inline;
+  float: left;
+  clear: none;
+  border: none;
+  padding: 0;
+  margin-right: 10px;
+}
+.rg-form-text label,
+.rg-form-field-label {
+  float: left;
+  width: 25%;
+  padding: 10px 0;
+}
+.rg-form-text input {
+  float: left;
+  width: 50%;
+}
+#rg-form-field-duration {
+  float: left;
+}
+#rg-form-field-duration label {
+  padding: 10px;
+  border: 1px solid #CCC;
+  display: block;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#rg-form-field-duration input {
+  display: none;
+}
+#rg-form-field-challenge {
+  display: block;
+  margin-top: 15px;
+  width: 100%;  
 }
