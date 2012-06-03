@@ -10,9 +10,9 @@ require({
   'state',
   'window',
   'jquery',
-  'View/Intervals',
-  'Model/Interval',
-  'Collection/Intervals',
+  'view/Intervals',
+  'model/Interval',
+  'collection/Intervals',
   'globalui/error',
   'hbs!template/container'
 ], function (env, state, window, $, IntervalsView, IntervalModel, IntervalCollection, globalError, containerTmpl) {

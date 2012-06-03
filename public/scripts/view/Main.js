@@ -1,6 +1,6 @@
 define([
   'backbone',
-  'View/Intervals'
+  'view/Intervals'
 ], function(Backbone, Intervals) {
 
 });
