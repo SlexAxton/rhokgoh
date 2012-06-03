@@ -18,7 +18,7 @@ require({
 
   //set initial state
   var $dfd = $.ajax({
-    url : env.get('api_base_url') + 'fakeData.json'
+    url : env.get('api_base_url') + 'challenge/' + env.get('challenge_id')
   });
 
   $dfd.success(function (resp) {
@@ -31,7 +31,9 @@ require({
     env.set({
       interval_type : data.interval_types[ resp.data.interval_type ],
       interval_offset : data.interval_offset,
-      challenge_duration : data.challenge_duration
+      challenge_duration : data.challenge_duration,
+      interval_start : data.interval_start,
+      challenge : data.challenge
     });
 
     var mainView = new IntervalsView({
