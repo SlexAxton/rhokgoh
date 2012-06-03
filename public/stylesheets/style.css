@@ -32,14 +32,13 @@ a {
 
 svg.thermo {
   width: 640px;
-  border-radius: 20px;
-  height: 40px;
-  -webkit-border-top-left-radius: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-  -moz-border-radius-topleft: 5px;
-  -moz-border-radius-bottomleft: 5px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  height: 60px;
+  -webkit-border-top-left-radius: 40px;
+  -webkit-border-bottom-left-radius: 40px;
+  -moz-border-radius-topleft: 40px;
+  -moz-border-radius-bottomleft: 40px;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
 }
 
 svg.calendar {

@@ -12,7 +12,7 @@ define([
     },
     name: 'thermo',
 
-    size: {height: 40, width: 4},
+    size: {height: 60, width: 5},
 
     render : function () {
       this.transform();
@@ -77,6 +77,7 @@ define([
         x = indexSuccess * width;
       }
       else if (isBlank) {
+        return {x:500,y:0,opacity:0};
         x = (totalSuccesses * width) + ((challengeLength - totalSuccesses) * width) + (indexBlank * width);
       }
       else {
@@ -84,8 +85,7 @@ define([
       }
       return {
         x: x,
-        y: 0,
-        height: isSuccess ? this.size['height'] : 22
+        y: 0
       };
     }
 
