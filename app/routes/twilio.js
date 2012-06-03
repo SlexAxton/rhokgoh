@@ -71,7 +71,7 @@ exports.twiliosend = function(req, res) {
   var TwilioClient = require('twilio').Client,
       Twiml = require('twilio').Twiml,
       sys = require('sys');
-  var client = new TwilioClient(twilioconfig.appid, twilioconfig.appkey,twilioconfig.hostname);
+  var client = new TwilioClient(twilioconfig.accountsid, twilioconfig.authtoken,twilioconfig.hostname);
   var phone = client.getPhoneNumber(twilioconfig.mynumber);
   var notifyList = getEndorsersToNotify();
   for (user in notifyList) { //[challenge name, participant name, endorser name, endorser phone number, amount] 
@@ -99,7 +99,7 @@ exports.twiliosendreminder = function(req, res) {
   var TwilioClient = require('twilio').Client,
       Twiml = require('twilio').Twiml,
       sys = require('sys');
-  var client = new TwilioClient(twilioconfig.appid, twilioconfig.appkey,twilioconfig.hostname);
+  var client = new TwilioClient(twilioconfig.accountsid, twilioconfig.authtoken,twilioconfig.hostname);
   var phone = client.getPhoneNumber(twilioconfig.mynumber);
   for (user in notifyList) { // [challenge name, challenge shortkey, name, phone number]
     var remindphone = notifyList[user][3];
