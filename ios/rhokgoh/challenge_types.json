@@ -1,0 +1,17 @@
+[
+	{
+		"challenge_type_id": 0,
+		"challenge_type": "Health Challenge"
+	},
+	{
+		"challenge_type_id": 1,
+		"challenge_type": "Personal Challenge"
+	},
+		"challenge_type_id": 2,
+		"challenge_type": "Community Challenge"
+	},
+	{
+		"challenge_type_id": 3,
+		"challenge_type": "Office Challenge"
+	}
+]

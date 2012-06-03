@@ -1,0 +1,28 @@
+[
+	{
+		"id": 10001,
+		"type": 3,
+		"checkin": "daily",
+		"title": "I gotta quit!",
+		"description": "Okay, so it's time for me to finally quit smoking. For every day that I don't smoke, if you'll pledge just a buck, it will not only help motivate me to quit smoking, but also help raise money for those in need.",
+		"fundraiser_id": 1001,
+		"campaign_id": 10001,
+		"lat": 30.2669,
+		"lon": 97.7428,
+		"start_date": "06-01-2012",
+		"end_date": "07-01-2012"
+	},
+	{
+		"id": 10002,
+		"type": 3,
+		"checkin": "weekly",
+		"title": "Boston Marathon",
+		"description": "Help me keep on track with my training for the Boston Marathon. I'll be running 50 miles each week, for the next 90 days. For every week that I run at least 50 miles, I'm asking for folks to pledge $10 towards my campaign. Thanks for your support!",
+		"fundraiser_id": 1001,
+		"campaign_id": 10001,
+		"lat": 30.2669,
+		"lon": 97.7428,
+		"start_date": "06-01-2012",
+		"end_date": "07-01-2012"
+	}
+]
