@@ -38,7 +38,8 @@ require({
 
     var mainView = new IntervalsView({
       el : document.getElementsByTagName('body')[0],
-      collection : new IntervalCollection( IntervalCollection.normalize(data) )
+      collection : new IntervalCollection( IntervalCollection.normalize(data) ),
+      model: env
     });
 
     mainView.render();
