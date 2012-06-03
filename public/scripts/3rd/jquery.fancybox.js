@@ -44,7 +44,7 @@ define(['jquery'], function (jQuery) {
 			padding: 15,
 			margin: 20,
 
-			width: 800,
+			width: 540,
 			height: 600,
 			minWidth: 100,
 			minHeight: 100,

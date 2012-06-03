@@ -88,7 +88,9 @@ define([
 
     // Set the winning ones to successful
     _(data.challenge_successes).forEach(function (success) {
-      intervals[success].set({success : true});
+      if (intervals[success]) {
+        intervals[success].set({success : true});
+      }
     });
 
     return intervals;
