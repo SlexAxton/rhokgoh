@@ -1,8 +1,9 @@
 define([
     'env',
     'backbone',
+    'jquery',
     'hbs!template/thermo'
-], function (Env, Backbone, thermoTmpl) {
+], function (Env, Backbone, $, thermoTmpl) {
   return Backbone.View.extend({
     template : thermoTmpl,
 
@@ -13,6 +14,7 @@ define([
 
     render : function () {
       this.transform();
+      $('svg').attr('class', this.name);
     },
 
     //transform this set into a calendar
@@ -34,15 +36,21 @@ define([
 
         var success = val.data('meta').get("success");
 
+        coord = self.computeThermoPosition(val, index, indexSuccess, success, totalSuccesses);
+
         if (success) {
           indexSuccess++;
         }
 
-        coord = self.computeThermoPosition(val, index, indexSuccess, success, totalSuccesses);
+        val
+          .attr({
+            stroke: 'none'
+          })
+          .animate(_.extend(coord, {
+            height:20,
+            width: 5
+          }), 500);
 
-        val.animate(_.extend(coord, {
-          height:20,
-          width: 5}), 1000);
       });
     },
 
@@ -53,7 +61,8 @@ define([
 
       return {
         x: x,
-        y: 0
+        y: 0,
+        height: isSuccess ? 20 : 22
       };
     }
 
