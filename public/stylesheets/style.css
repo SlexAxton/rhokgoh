@@ -280,3 +280,9 @@ svg {
 .rg-duration-selected label {
   background-color: #FFBF53;
 }
+.fb-like,
+.fb-comments {
+  display: block !important;
+  width: 340px;
+  margin: 14px auto;
+}
