@@ -1,0 +1,111 @@
+<html>
+<head>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="rg-outer">
+  <div class="rg-header">
+    <div class="rg-header-primary">
+      <div class="rg-header-summary">4 people have pledged $8 if Mark doesn't smoke today.</div>
+      <ul class="rg-header-endorsers">
+        <li>
+          <dl>
+            <dt>Alex Sexton</dt>
+            <dd class="rg-header-endorsers-avi"><img src="img/slex.jpg" alt="" /></dd>
+            <dd class="rg-header-endorsers-pledge">$<b>2</b></dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>Mark DiMarco</dt>
+            <dd class="rg-header-endorsers-avi"><img src="img/mark.jpg" alt="" /></dd>
+            <dd class="rg-header-endorsers-pledge">$<b>2</b></dd>
+          </dl>
+        </li>
+      </ul>
+    </div>
+    <ul class="rg-header-actions">
+      <li><a class="rg-button-primary" href="#">Make a Pledge</a></li>
+      <li><a class="rg-button-secondary" href="#">Start your own challenge</a></li>
+    </ul>
+  </div><!-- end rg-header -->
+  <div class="rg-content">
+    <div class="rg-content-primary">
+      <ul class="rg-content-primary-stats">
+        <li>
+          <dl>
+            <dt>Raised</dt>
+            <dd>$64</dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>Days to Go</dt>
+            <dd>47</dd>
+          </dl>
+        </li>
+        <li>
+          <dl>
+            <dt>Potential</dt>
+            <dd>$867</dd>
+          </dl>
+        </li>
+      </ul>
+      <div class="rg-content-primary-viz">
+        <!-- raphael viz goes here -->
+      </div>
+    </div>
+    <div class="rg-content-secondary">
+      <!-- fb comments go here -->
+    </div>
+  </div><!-- end rg-content -->
+</div><!-- end rg-outer -->
+
+<form id="" target="" action="" method="POST" novalidate="novalidate">
+  <ul class="rg-form-fieldgroup">
+    <li>
+      <label for="rg-form-field-challenge">I would like to receive donations for each day that I:</label>
+      <input id="rg-form-field-challenge" type="text" name="challenge" placeholder="Example: Eat healthy" maxlength="50">
+    </li>
+    <li class="rg-form-text">
+      <label for="rg-form-field-start-date">Start date:</label>
+      <input id="rg-form-field-start-date" type="text" name="start date" placeholder="MM/DD/YYYY">
+    </li>
+    <li class="rg-form-radio">
+      <span class="rg-form-field-label"># of days:</span>
+      <ul id="rg-form-field-duration">
+        <li>
+          <label for="rg-form-field-duration-30">30</label>
+          <input id="rg-form-field-duration-30" type="radio" name="days" value="30" title="30">
+        </li>
+        <li>
+          <label for="rg-form-field-duration-60">60</label>
+          <input id="rg-form-field-duration-60" type="radio" name="days" value="60" title="60">
+        </li>
+        <li>
+          <label for="rg-form-field-duration-90">90</label>
+          <input id="rg-form-field-duration-90" type="radio" name="days" value="90" title="90">
+        </li>
+      </ul>
+    </li>
+    <li>
+      <input id="rg-form-field-reminder" type="checkbox" name="reminder">
+      <label for="rg-form-field-reminder">Remind me with a daily text message</label>
+    </li>
+    <li class="rg-form-text">
+      <label for="rg-form-field-reminder-phone">Phone #:</label>
+      <input id="rg-form-field-reminder-phone" type="text" name="phone" placeholder="999-999-9999">
+    </li>
+    <li class="rg-form-text">
+      <label for="rg-form-field-reminder-time">Time:</label>
+      <input id="rg-form-field-reminder-time" type="text" name="time" placeholder="">
+    </li>
+    <li class="rg-form-actions">
+      <input class="rg-button-primary" id="rg-form-actions-submit" type="input" name="submit" value="Submit">
+    </li>
+  </ul>
+</form>
+
+</body>
+</html>

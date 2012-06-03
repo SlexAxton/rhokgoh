@@ -18,7 +18,7 @@ require({
 
   //set initial state
   var $dfd = $.ajax({
-    url : env.get('api_base_url') + 'fakeData.json'
+    url : env.get('api_base_url') + 'challenge/' + env.get('challenge_id')
   });
 
   $dfd.success(function (resp) {
