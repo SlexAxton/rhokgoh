@@ -31,7 +31,7 @@ $(function () {
       var id = data.results[0]._id;
       var randomNumber = Math.floor((Math.random()*20)+1);
       var i;
-      $('#container').html('Created: <a href="/api/challenge/' + id + '">' + id + '</a>');
+      $('#container').html('Created: <a href="/challenge/' + id + '">' + id + '</a>');
 
       for (i=0; i < randomNumber; i++) {
         if (Math.random() < 0.7) {

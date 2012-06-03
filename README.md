@@ -15,14 +15,12 @@ Running
 
 ```
 cd /vagrant
+mkdir -p config/local
+cp config/sample/* config/local
 ./run.sh
 ```
 
-
-
-The VM will be available at http://192.168.50.10 from the host machine
-
-We suggest that you set up a nicer name for this.
+Create a host override for the VM on your host:
 
 `sudo vim /etc/hosts`
 
@@ -43,3 +41,8 @@ twilioconfig.hostname = 'example.com';
 twilioconfig.mynumber = '+15551234455';
 module.exports = twilioconfig;
 ---END--
+
+Mongo
+-----
+
+If your MongoDB gets messed up, you can drop the challenges collection by running ```dropchallenges.sh```
