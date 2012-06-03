@@ -3,7 +3,7 @@ define([
   'backbone',
   'moment',
   'underscore',
-  'Model/Interval',
+  'model/Interval',
   'util/tzOffset'
 ], function (env, Backbone, moment, _, IntervalModel, tzOffset) {
   var res = Backbone.Collection.extend({

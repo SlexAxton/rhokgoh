@@ -89,7 +89,7 @@ exports.routes = function (prefix, app) {
     });
   });
 
-  app.post('/pledge', function (req, res) {
+  app.post('/challenge/:challenge/pledge', function (req, res) {
     // Get the user's FB data using the access token.
     fb.user(req.param('access_token'), function (err, user) {
       if (err) {
