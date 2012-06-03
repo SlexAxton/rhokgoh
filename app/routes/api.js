@@ -64,7 +64,7 @@ function createPledge (req, user, hollaback) {
     {
       created : moment().valueOf(),
       uid : user.id,
-      challenge : req.param('challenge_id'),
+      challenge : req.param('challenge'),
       amount : req.param('amount'),
       total : req.param('total'),
       email : req.param('email'),
