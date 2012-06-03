@@ -90,6 +90,31 @@ exports.routes = function (prefix, app) {
     });
   });
 
+  app.get('/pledge/:id', function (req, res) {
+    pledgesCollection.find({ _id : new ObjectID(req.params.id) }).toArray(function (err, items) {
+      var pledge = items[0];
+      if (pledge) {
+        res.json({
+          error : !!err,
+          data : {
+            created : moment().valueOf(),
+            amount : pledge.amount,
+            total : pledge.total,
+            email : pledge.email,
+            anonymous : pledge.anonymous,
+            reminder : pledge.reminder,
+            phone : pledge.phone
+          }
+        });
+      } else {
+        res.json({
+          error : true,
+          data : {}
+        });
+      }
+    });
+  });
+
   // get a list of challenges, limited to 100, sorted by create time desc
   app.get('/challenge', function (req, res) {
     challenges.find({}).sort({ created : -1 }).limit(100).toArray(function (err, items) {
