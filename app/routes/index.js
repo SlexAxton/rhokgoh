@@ -38,6 +38,7 @@ exports.pledge_form = function (req, res) {
     title : 'Pledge',
     access_token : req.param('accessToken', ''),
     built : req.query.servebuild,
-    options : JSON.stringify(options)
+    options : JSON.stringify(options),
+    challenge_id : req.params.id
   });
 };
