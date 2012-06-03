@@ -15,6 +15,7 @@ define([
     },
 
     render: function () {
+      console.log(this.collection.toJSON({filter:'months'}));
 
       //empty in memory div for initialization
       var raphaelElement = $('<div/>');
