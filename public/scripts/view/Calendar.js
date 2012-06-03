@@ -53,6 +53,7 @@ define([
 
     },
 
+    //determine fill color
     getFillColor: function(data) {
       var fill;
       if (data.blank) {
@@ -62,10 +63,10 @@ define([
         fill = 'green';
       }
       else {
-
         var date = new Date(data.day);
         var today = new Date();
 
+        //if today
         if ((date.getDate() === today.getDate()) &&
               (date.getMonth() === today.getMonth()) &&
               (date.getYear() === today.getYear())) {
@@ -76,6 +77,7 @@ define([
           fill = 'rgba(233,233,233,1)';
         }
         else {
+          //if failure
           fill = 'rgba(100,100,100,0.33)';
         }
       }
