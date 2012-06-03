@@ -8,6 +8,12 @@
   width: 920px;
 }
 
+.uiBoxYellow {
+  display: none !important;
+}
+#interval_wrapper {
+  padding: 10px;
+}
 a {
   color: #00B7FF;
 }
