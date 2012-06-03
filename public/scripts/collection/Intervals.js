@@ -1,21 +1,31 @@
 define([
+  'env',
   'backbone',
   'moment',
   'underscore',
   'Model/Interval',
   'util/tzOffset'
-], function (Backbone, moment, _, IntervalModel, tzOffset) {
+], function (env, Backbone, moment, _, IntervalModel, tzOffset) {
   var res = Backbone.Collection.extend({
     model : IntervalModel,
 
     toMonths : function (data, count) {
-      var months = {};
+      var output = [];
+      var offset = env.get('interval_offset');
+      for (var i = 0; i < offset; i++ ) {
+        output.push({
+          blank : true
+        });
+      }
 
-      // Loop through the data, and find the available months
-      _(data).forEach(function (Interval, idx) {
-        console.log( Interval.start );
-        var date = Interval.start;
-      });
+      for (var j = 0; j < 30 && j < data.length; j++) {
+        output.push(data[j]);
+      }
+
+      while (output.length < 35) {
+        
+      }
+      console.log( output, output.length );
 
       return data;
     },
@@ -29,20 +39,10 @@ define([
         return out;
       }
 
-      // Try to get a key/val pair
-      var filterSplit = opts.filter.split('=');
-      if ( filterSplit.length !== 2 ) {
-        // TODO :: don't silently not filter.
-        return out;
-      }
-
-      var filterType = filterSplit[0];
-      var filterVal = parseInt(filterSplit[1], 10);
-
       // The support types
-      if (filterType === 'months') {
+      if (opts.filter === 'months') {
         // Clone and own.
-        return this.toMonths( JSON.parse( JSON.stringify(out) ), filterVal );
+        return this.toMonths( JSON.parse( JSON.stringify(out) ) );
       }
 
       // If we get here, we sent a filter, but didn't
@@ -69,7 +69,7 @@ define([
 
     // Set the winning ones to successful
     _(data.challenge_successes).forEach(function (success) {
-      intervals[success].success = true;
+      intervals[success].set({success : true});
     });
 
     return intervals;
