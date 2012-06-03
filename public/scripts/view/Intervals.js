@@ -15,7 +15,7 @@ define([
     },
 
     render: function () {
-
+      console.log(this.collection.toJSON({filter:'months'}));
       this.$el.append( intervalStateTmpl({}) );
 
       //empty in memory div for initialization

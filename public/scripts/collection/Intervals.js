@@ -9,25 +9,44 @@ define([
   var res = Backbone.Collection.extend({
     model : IntervalModel,
 
-    toMonths : function (data, count) {
-      var output = [];
-      var offset = env.get('interval_offset');
-      for (var i = 0; i < offset; i++ ) {
-        output.push({
-          blank : true
-        });
+    _toMonths : function (data, count) {
+      var res = [];
+      var dur = env.get('challenge_duration');
+      var groups = [0,1,2];
+      if (dur === 30) {
+        groups = [0];
+      }
+      else if (dur === 60) {
+        groups = [0,1];
       }
 
-      for (var j = 0; j < 30 && j < data.length; j++) {
-        output.push(data[j]);
-      }
+      var offset = parseInt(env.get('interval_offset'), 10);
 
-      while (output.length < 35) {
-        
-      }
-      console.log( output, output.length );
+      _(groups).forEach(function (x) {
+        var output = [];
+        if (res.length) {
+          offset = (offset + 30) % 7;
+        }
 
-      return data;
+        for (var i = 0; i < offset; i++ ) {
+          output.push({
+            blank : true
+          });
+        }
+
+        for (var j = 0; j < 30 && data.length; j++) {
+          output.push(data.shift());
+        }
+
+        while (output.length < 42) {
+          output.push({
+            blank : true
+          });
+        }
+        res.push(output);
+      });
+
+      return res;
     },
 
     toJSON : function (opts) {
@@ -42,7 +61,7 @@ define([
       // The support types
       if (opts.filter === 'months') {
         // Clone and own.
-        return this.toMonths( JSON.parse( JSON.stringify(out) ) );
+        return this._toMonths( JSON.parse( JSON.stringify(out) ) );
       }
 
       // If we get here, we sent a filter, but didn't
