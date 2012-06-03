@@ -79,7 +79,7 @@ define([
             fixed : false,
             autoCenter : false,
             padding : 0,
-            minWidth: 700,
+            minWidth: 540,
             switchContentOnly : true,
             type : 'iframe',
             href : 'http://local.rhokgoh.com/pledge?accessToken=' + response.authResponse.accessToken
@@ -97,7 +97,7 @@ define([
             fixed : false,
             autoCenter : false,
             padding : 0,
-            minWidth: 700,
+            minWidth: 540,
             switchContentOnly : true,
             type : 'iframe',
             href : 'http://local.rhokgoh.com/challenge?accessToken=' + response.authResponse.accessToken

@@ -5,8 +5,9 @@ body {
 #fancybox-overlay {
   display: none !important;
 }
-#challenge_form {
-  padding: 35px;
+#challenge_form,
+#pledge_form {
+  padding: 40px;
 }
 
 .rg-outer {
@@ -31,14 +32,13 @@ a {
 
 svg.thermo {
   width: 640px;
-  border-radius: 20px;
-  height: 40px;
-  -webkit-border-top-left-radius: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-  -moz-border-radius-topleft: 5px;
-  -moz-border-radius-bottomleft: 5px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  height: 60px;
+  -webkit-border-top-left-radius: 40px;
+  -webkit-border-bottom-left-radius: 40px;
+  -moz-border-radius-topleft: 40px;
+  -moz-border-radius-bottomleft: 40px;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
 }
 
 svg.calendar {
@@ -211,8 +211,13 @@ svg {
   overflow: visible;
 }
 .rg-form-fieldgroup input {
-  font-size: 14px;
+  font-size: 16px;
   font-family: Arial, Helvetica, sans-serif;
+}
+.rg-form-fieldgroup input.rg-button-primary {
+  width: 60%;
+  padding: 15px 0;
+  margin: 0 auto;
 }
 .rg-form-fieldgroup input[type="text"] {
   border: 1px solid #CCC;
@@ -233,6 +238,20 @@ svg {
   border-bottom: 1px solid #DDD;
   overflow: hidden;
   zoom: 1;
+  -webkit-box-shadow: inset 0 1px 0 #FFF;
+  -moz-box-shadow: inset 0 1px 0 #FFF;
+  -o-box-shadow: inset 0 1px 0 #FFF;
+  box-shadow: inset 0 1px 0 #FFF;
+}
+.rg-form-fieldgroup li:first-child,
+.rg-form-fieldgroup li.rg-form-text-double {
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -o-box-shadow: none;
+  box-shadow: none;
+}
+.rg-form-fieldgroup li.rg-form-actions {
+  border: none;
 }
 .rg-form-fieldgroup li.rg-form-text-double {
   clear: none;
@@ -282,8 +301,18 @@ svg {
 #rg-form-field-challenge {
   display: block;
   margin-top: 15px;
-  width: 90%;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
 }
 .rg-duration-selected label {
   background-color: #FFBF53;
+}
+.fb-like,
+.fb-comments {
+  display: block !important;
+  width: 340px;
+  margin: 14px auto;
 }

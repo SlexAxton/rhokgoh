@@ -11,6 +11,7 @@ var db = new mongo.Db('goh', mongoServer);
 db.open(function (err, db) {});
 var challenges = db.collection('challenges');
 var usersCollection = db.collection('users');
+var pledgesCollection = db.collection('pledges');
 
 // only supports get and post... probably good enough
 function router(prefix, app) {
@@ -61,6 +62,58 @@ function createChallenge (req, user, hollaback) {
 exports.routes = function (prefix, app) {
   // make all api routes start with prefix
   app = router(prefix, app);
+
+  app.get('/pledge', function (req, res) {
+    pledgesCollection.find({}).sort({ created : -1 }).limit(100).toArray(function (err, items) {
+      res.json({
+        results : items
+      });
+    });
+  });
+
+  app.post('/pledge', function (req, res) {
+    pledgesCollection.insert({
+      created : moment().valueOf(),
+      amount : req.param('amount'),
+      total : req.param('total'),
+      email : req.param('email'),
+      anonymous : req.param('anonymous') === 'on',
+      reminder : req.param('reminder') === 'on',
+      phone : req.param('phone')
+    },
+    { safe : true },
+    function (err, items) {
+      res.json({
+        error : false,
+        results : items
+      })
+    });
+  });
+
+  app.get('/pledge/:id', function (req, res) {
+    pledgesCollection.find({ _id : new ObjectID(req.params.id) }).toArray(function (err, items) {
+      var pledge = items[0];
+      if (pledge) {
+        res.json({
+          error : !!err,
+          data : {
+            created : moment().valueOf(),
+            amount : pledge.amount,
+            total : pledge.total,
+            email : pledge.email,
+            anonymous : pledge.anonymous,
+            reminder : pledge.reminder,
+            phone : pledge.phone
+          }
+        });
+      } else {
+        res.json({
+          error : true,
+          data : {}
+        });
+      }
+    });
+  });
 
   // get a list of challenges, limited to 100, sorted by create time desc
   app.get('/challenge', function (req, res) {
