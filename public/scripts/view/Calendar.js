@@ -36,7 +36,8 @@ define([
           val
           .attr({
             fill: fill,
-            stroke: stroke
+            stroke: stroke,
+            opacity: 1
           })
           .animate(
             _.extend(
@@ -57,7 +58,7 @@ define([
     getFillColor: function(data) {
       var fill;
       if (data.blank) {
-        fill = 'rgba(0,0,0,0.1)';
+        fill = 'rgba(0,0,0,0.08)';
       }
       else if (data.success) {
         fill = 'rgba(125,192,79,1)';
@@ -75,7 +76,7 @@ define([
         }
         //future
         else if (+date > +today) {
-          fill = '#FFF';
+          fill = '#DFDFDF';
         }
         else {
           //if failure
