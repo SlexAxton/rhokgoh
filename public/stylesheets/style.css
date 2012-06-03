@@ -13,8 +13,8 @@ a {
 }
 
 svg.thermo {
-  border: 1px solid #bada55;
-  width: 600px;
+  width: 640px;
+  border-radius: 20px;
   height: 40px;
   -webkit-border-top-left-radius: 5px;
   -webkit-border-bottom-left-radius: 5px;
