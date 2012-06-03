@@ -71,6 +71,7 @@ define([
     },
 
     makePledge : function (e) {
+      var self = this;
       FB.login(function (response) {
         if (response.authResponse) {
           $.fancybox.open({
@@ -82,7 +83,8 @@ define([
             minWidth: 540,
             switchContentOnly : true,
             type : 'iframe',
-            href : 'http://local.rhokgoh.com/pledge?accessToken=' + response.authResponse.accessToken
+            href : 'http://local.rhokgoh.com/pledge?accessToken=' + response.authResponse.accessToken + '&id=' +
+              self.model.get('challenge_id')
           });
         }
       });

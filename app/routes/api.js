@@ -71,7 +71,7 @@ exports.routes = function (prefix, app) {
     });
   });
 
-  app.post('/pledge', function (req, res) {
+  app.post('/challenge/:challenge/pledge', function (req, res) {
     pledgesCollection.insert({
       created : moment().valueOf(),
       amount : req.param('amount'),
@@ -79,7 +79,8 @@ exports.routes = function (prefix, app) {
       email : req.param('email'),
       anonymous : req.param('anonymous') === 'on',
       reminder : req.param('reminder') === 'on',
-      phone : req.param('phone')
+      phone : req.param('phone'),
+      challendge_id : req.params.challenge
     },
     { safe : true },
     function (err, items) {
