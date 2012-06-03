@@ -10,6 +10,8 @@
 {{else}}
 This is the challenges home page, it doesn't make that much sense to be here. Try going to a challenge url.
 
+<p><a href="/htmls/impregnatemongo.html">Click this to populate mongo with baby mongoloids</a>, or do the stuff below...</p>
+
 <pre contenteditable><code>
 > curl -d "name=whatever&start=2012-05-15" http://local.rhokgoh.com/api/challenge
 
@@ -33,3 +35,25 @@ This is the challenges home page, it doesn't make that much sense to be here. Tr
 
 {{/unless}}
 
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '438527712837758', // App ID
+      channelUrl : '//local.rhokgoh.com/channel.html', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
