@@ -59,15 +59,6 @@ app.get('/twiliosend', twilioroutes.twiliosend);
 // Twilio - Tie into an API/Database that gets messages to send?
 app.get('/twiliosendreminder', twilioroutes.twiliosendreminder);
 
-//twilio respond to messages
-app.get('/twilio', twilioroutes.twilio);
-
-// Twilio - Tie into an API/Database that gets messages to send?
-app.get('/twiliosend', twilioroutes.twiliosend);
-
-// Twilio - Tie into an API/Database that gets messages to send?
-app.get('/twiliosendreminder', twilioroutes.twiliosendreminder);
-
 app.listen(80, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
