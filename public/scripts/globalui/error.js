@@ -3,7 +3,7 @@ define(['window'], function (window) {
     dataError : function (msg) {
       msg = msg || 'There was an error.';
 
-      window.alert(msg);
+      console.log(msg);
     }
   };
 });

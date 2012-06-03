@@ -21,7 +21,7 @@ exports.data = function (req, res) {
       goals : [{
         id : '10293',
         name : 'Stop Smoking',
-        success : (Math.random > 0.7 ? false : true)
+        success : (Math.random() > 0.7 ? false : true)
       }]
     };
   });
