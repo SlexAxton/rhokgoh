@@ -62,3 +62,30 @@ app.get('/twiliosendreminder', twilioroutes.twiliosendreminder);
 app.listen(80, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
 });
+
+/* cron utilities */
+var cronJob = require('cron').CronJob;
+var job = new cronJob({
+  cronTime: '00 00 20 * * *',
+  onTick: function() {
+    // Runs every day at 8pm
+    // TODO: actually make this call the service for reminder service
+    console.log('cron test - daily reminder job');
+  },
+  start: false,
+  timeZone: "America/Chicago"
+});
+job.start();
+
+var completejob = new cronJob({
+  cronTime: '00 00 * * * *',
+  onTick: function() {
+    // Runs every hour
+    // TODO: actually make this call the service to send notifications for sponsors of recently completed challenges
+    console.log('cron test - hourly job');
+  },
+  start: false,
+  timeZone: "America/Chicago"
+});
+completejob.start();
+
