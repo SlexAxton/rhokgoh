@@ -24,7 +24,7 @@ define([
 
       //get count of successes, dirty for now
       var totalSuccesses = _.filter(this.intervalElementSet, function(val) {
-        return val.data("meta").get("goals")[0].success;
+        return val.data("meta").get("success");
       }).length;
 
       var indexSuccess = 0;
@@ -32,7 +32,7 @@ define([
       _.each(this.intervalElementSet, function(val, index) {
         if (index === 1) console.log('thur', val.data("meta"));
 
-        var success = val.data('meta').get('goals')[0].success;
+        var success = val.data('meta').get("success");
 
         if (success) {
           indexSuccess++;
@@ -50,7 +50,7 @@ define([
       var x, y;
 
       x = isSuccess ? 0 + indexSuccess * 5 : 0 + (numSuccess + (index - indexSuccess)) * 5;
-      
+
       return {
         x: x,
         y: 0

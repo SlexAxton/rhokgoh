@@ -14,7 +14,6 @@ require({
   'Collection/Intervals',
   'globalui/error'
 ], function (env, state, $, IntervalsView, IntervalModel, IntervalCollection, globalError) {
-
   var dataError = globalError.dataError;
 
   //set initial state
@@ -22,14 +21,22 @@ require({
     url : env.get('api_base_url') + 'fakeData.json'
   });
 
-  $dfd.success(function (data) {
-    if (data.error) {
-      return dataError(data.error_msg);
+  $dfd.success(function (resp) {
+    if (resp.error) {
+      return dataError(resp.error_msg);
     }
+
+    var data = resp.data;
+
+    env.set({
+      interval_type : data.interval_types[ resp.data.interval_type ],
+      interval_offset : data.interval_offset,
+      challenge_duration : data.challenge_duration
+    });
 
     var mainView = new IntervalsView({
       el : document.getElementsByTagName('body')[0],
-      collection : new IntervalCollection(data.results.intervals)
+      collection : new IntervalCollection( IntervalCollection.normalize(data) )
     });
 
     mainView.render();

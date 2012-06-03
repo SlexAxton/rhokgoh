@@ -24,7 +24,7 @@ define([
 
       _.each(this.intervalElementSet, function(val, index) {
         coords = self.convertDateToCoordinate(val.data("meta").get("day"), index);
-        var success = val.data("meta").get("goals")[0].success;
+        var success = val.data("meta").get("success");
         val.animate(
           _.extend(
             coords,
@@ -36,6 +36,7 @@ define([
           ),
           100);
       });
+
     },
 
     convertDateToCoordinate : function (date, index) {
@@ -44,7 +45,7 @@ define([
       return {
         x: dateObj.getDay() * 10,
         y: (0 | dateObj.getDate() / 7) * 10
-      }
+      };
     }
 
 
