@@ -49,6 +49,7 @@ app.configure('production', function(){
 app.get('/', routes.index);
 app.get('/challenge/:id', routes.challenge);
 app.get('/challenge', routes.challenge_form);
+app.get('/pledge', routes.pledge_form);
 api.routes('/api', app);
 
 //twilio respond to messages

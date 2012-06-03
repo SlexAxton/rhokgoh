@@ -66,7 +66,26 @@ define([
 
     events : {
       "click svg" : "triggerStateChange",
-      "click .rg-button-secondary" : "makeChallenge"
+      "click .rg-button-secondary" : "makeChallenge",
+      "click .rg-button-primary" : "makePledge"
+    },
+
+    makePledge : function (e) {
+      FB.login(function (response) {
+        if (response.authResponse) {
+          $.fancybox.open({
+            autoSize : false,
+            fitToView : false,
+            fixed : false,
+            autoCenter : false,
+            padding : 0,
+            minWidth: 700,
+            switchContentOnly : true,
+            type : 'iframe',
+            href : 'http://local.rhokgoh.com/pledge?accessToken=' + response.authResponse.accessToken
+          });
+        }
+      });
     },
 
     makeChallenge : function (e) {
